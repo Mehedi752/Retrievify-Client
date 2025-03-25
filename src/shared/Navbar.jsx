@@ -129,12 +129,7 @@ const Navbar = () => {
                 </p>
               </div>
             ) : (
-              <Link
-                to={"/auth/register"}
-                className="underline text-black hover:text-blue-700"
-              >
-                Register
-              </Link>
+              ""
             )}
             {user && user.email ? (
               <button
@@ -144,12 +139,12 @@ const Navbar = () => {
                 Logout
               </button>
             ) : (
-              <Link
+              <NavLink
                 to={"/auth/login"}
                 className="btn bg-[#1a237e] border-none hover:bg-blue-700 text-white"
               >
                 Login
-              </Link>
+              </NavLink>
             )}
           </div>
         </div>
