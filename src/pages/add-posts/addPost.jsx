@@ -4,38 +4,30 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../hooks/useAuth';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 
 const AddPost = () => {
     const { user } = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
-    // const { data: currentUser = [], refetch } = useQuery({
-    //     queryKey: ['currentUser', user?.email],
-    //     queryFn: async () => {
-    //         const res = await axiosPublic.get(`/users/${user?.email}`);
-    //         return res.data;
-    //     },
-    // });
+    const { data: currentUser = [], refetch } = useQuery({
+        queryKey: ['currentUser', user?.email],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/users/${user?.email}`);
+            return res.data;
+        },
+    });
     // console.log(currentUser);
 
 
 
     const onSubmit = (data) => {
-        Swal.fire({
-            icon: 'error',
-            title: 'Subscription Required',
-            text: 'Please subscribe to add more products',
-            showConfirmButton: false,
-            timer: 2000
-        });
-        navigate('/dashboard/user/profile');
-        return;
 
-        const productData = {
+        const postData = {
             ...data,
             ownerName: user?.displayName || 'Anonymous',
             ownerImage: user?.photoURL || '/default-avatar.png',
@@ -43,31 +35,26 @@ const AddPost = () => {
             timestamp: new Date(), // Save current timestamp
         };
 
-        //Save product data to the database
-        // axiosPublic.post('/products', productData)
-        //     .then((res) => {
-        //         if (res.data.insertedId) {
-        //             Swal.fire({
-        //                 icon: 'success',
-        //                 title: 'Product Added',
-        //                 text: 'Your product has been added successfully',
-        //                 showConfirmButton: false,
-        //                 timer: 2000
-        //             });
-        //         }
-        //         refetch();
-        //         axiosPublic.patch(`/users/countProductAdd/${user?.email}`)
-        //             .then((res) => {
-        //                 console.log(res);
-        //                 refetch();
-        //                 navigate('/dashboard/user/myProducts');
-        //             })
-        //             .catch((error) => {
-        //                 console.error('Error updating product count:', error);
-        //             });
-        //     })
-        //     .catch(error => console.error(error));
-
+        axiosPublic.post('/posts', postData)
+            .then(res => {
+                console.log(res.data);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Your Post Added Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // navigate('/');
+            })
+            .catch(err => {
+                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong! Please try again.',
+                });
+            });
+        // refetch();
     };
 
     return (
@@ -179,7 +166,7 @@ const AddPost = () => {
 
                     {/* Owner Info */}
                     <div className="mb-4">
-                        <label htmlFor="owner" className="block font-medium mb-1">Owner Info</label>
+                        <label htmlFor="owner" className="block font-medium mb-1">Owner Extra Info</label>
                         <input
                             type="text"
                             id="ownerName"
