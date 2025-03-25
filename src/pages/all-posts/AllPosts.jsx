@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const AllPosts = () => {
     const axiosPublic = useAxiosPublic();
@@ -87,20 +88,24 @@ const AllPosts = () => {
 
                                     {
                                         post.type === 'lost' ? (
-                                            <button
-                                                className="mt-5 w-full bg-[#1a237e] hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transitio"
-                                            >
-                                                View Details
-                                            </button>
-                                        ) : (
-                                            <div className="flex justify-between items-center gap-3 mt-5">
+                                            <Link to={`/posts/${post._id}`}>
                                                 <button
-                                                    className="w-full bg-[#1a237e] hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transitio"
+                                                    className="mt-5 w-full bg-[#1a237e] hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transitio"
                                                 >
                                                     View Details
                                                 </button>
+                                            </Link>
+                                        ) : (
+                                            <div className="flex justify-between items-center gap-3 mt-5">
+                                                <Link to={`/posts/${post._id}`}>
+                                                    <button
+                                                        className="bg-[#1a237e] hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transitio"
+                                                    >
+                                                        View Details
+                                                    </button>
+                                                </Link>
                                                 <button
-                                                    className="w-full bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
+                                                    className=" bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
                                                 >
                                                     Claim Item
                                                 </button>

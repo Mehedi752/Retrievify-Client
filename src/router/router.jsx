@@ -6,6 +6,7 @@ import Login from '../auth/Login'
 import Home from '../pages/home/Home'
 import AddPost from '../pages/add-posts/addPost'
 import AllPosts from '../pages/all-posts/AllPosts'
+import PostDetails from '../pages/post-details/PostDetails'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/posts',
         element: <AllPosts></AllPosts>
+      },
+      {
+        path: '/posts/:id',
+        element: <PostDetails></PostDetails>
       }
     ]
   }
