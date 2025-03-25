@@ -5,6 +5,7 @@ import Register from '../auth/Register'
 import Login from '../auth/Login'
 import Home from '../pages/home/Home'
 import AddPost from '../pages/add-posts/addPost'
+import AllPosts from '../pages/all-posts/AllPosts'
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/addPost",
         element: <AddPost></AddPost>
-
+      },
+      {
+        path: '/posts',
+        element: <AllPosts></AllPosts>
       }
     ]
   }
