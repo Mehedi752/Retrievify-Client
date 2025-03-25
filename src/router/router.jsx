@@ -1,45 +1,50 @@
-import { createBrowserRouter } from 'react-router-dom'
-import MainLayout from '../layout/MainLayout'
-import ErrorPage from '../error/ErrorPage'
-import Register from '../auth/Register'
-import Login from '../auth/Login'
-import Home from '../pages/home/Home'
-import AddPost from '../pages/add-posts/addPost'
-import AllPosts from '../pages/all-posts/AllPosts'
-import PostDetails from '../pages/post-details/PostDetails'
+import { createBrowserRouter } from "react-router-dom";
+import MainLayout from "../layout/MainLayout";
+import ErrorPage from "../error/ErrorPage";
+import Register from "../auth/Register";
+import Login from "../auth/Login";
+import Home from "../pages/home/Home";
+import AddPost from "../pages/add-posts/addPost";
+import AllPosts from "../pages/all-posts/AllPosts";
+import PostDetails from "../pages/post-details/PostDetails";
+import About from "../pages/About/About";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path: '/auth/register',
-        element: <Register></Register>
+        path: "/about",
+        element: <About />,
       },
       {
-        path: '/auth/login',
-        element: <Login></Login>
+        path: "/auth/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/auth/login",
+        element: <Login></Login>,
       },
       {
         path: "/addPost",
-        element: <AddPost></AddPost>
+        element: <AddPost></AddPost>,
       },
       {
-        path: '/posts',
-        element: <AllPosts></AllPosts>
+        path: "/posts",
+        element: <AllPosts></AllPosts>,
       },
       {
-        path: '/posts/:id',
-        element: <PostDetails></PostDetails>
-      }
-    ]
-  }
-])
+        path: "/posts/:id",
+        element: <PostDetails></PostDetails>,
+      },
+    ],
+  },
+]);
 
-export default router
+export default router;
