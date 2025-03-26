@@ -12,7 +12,7 @@ const Navbar = () => {
             <>
                 <li><Link to={'/posts'}>All Posts</Link></li>
                 <li><Link to={'/addPost'}>Add Post</Link></li>
-                {/* <li><Link to={`/borrowedBooks/${user.email}`}>Borrowed Books</Link></li> */}
+                <li><Link to={`/myAddedPosts`}>My Added Posts</Link></li>
             </>
         }
         <li><Link to={'/about'}>About</Link></li>
