@@ -1,85 +1,150 @@
-import { Link } from "react-router-dom";
-import ContactPage from "./ContactPage";
-import contactImg from '../../assets/contact.png'
+import { FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const Contact = () => {
+  const position = [24.7471, 90.4203];
+
   return (
-    <>
-      <div className="flex flex-col items-center justify-center py-24  relative overflow-hidden">
-        <div
-          style={{ backgroundImage: `url(${contactImg})` }}
-          className="absolute w-full h-full bg-no-repeat bg-cover opacity-50"
-        />
-        <div className="relative z-10 text-center">
-          <h1 className="text-4xl font-serif font-semibold text-black border-b-2 border-cyan-500">
-            Contact
-          </h1>
-          <nav className="mt-2 text-gray-600">
-            <Link to={"/"}>
-              <span className="text-black font-medium">Home</span> /{" "}
-            </Link>
-            <Link to={"/contact"}>
-              <span className="text-gray-500">Contact</span>
-            </Link>
-          </nav>
+    <div className="flex flex-col shadow-2xs bg-gray-100 text-gray-900 p-12 rounded-2xl border border-gray-200">
+      <div className="flex flex-col md:flex-row">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="md:w-1/2 p-6 space-y-6"
+        >
+          <motion.h1
+            animate={{ x: 50, color: ["#48dbfb", "#fd79a8"] }}
+            transition={{
+              duration: 2,
+              delay: 1,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }}
+            className="text-3xl md:text-5xl font-bold text-gray-800"
+          >
+            Contact Us
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-lg text-gray-600"
+          >
+            Have inquiries or collaboration ideas? Get in touch with us!
+          </motion.p>
+
+          <div className="mt-4 space-y-5">
+            <motion.div
+              className="flex items-center space-x-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <FaEnvelope className="text-cyan-600 text-xl bg-cyan-200 btn rounded-full w-14 h-14" />
+              <span className="text-lg text-gray-800">
+                retrievify@gmail.com
+              </span>
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <FaWhatsapp className="text-green-500 text-xl bg-cyan-200 btn rounded-full w-14 h-14" />
+              <span className="text-lg text-gray-800">+880 160 953 1117</span>
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <FaMapMarkerAlt className="text-red-500 text-xl bg-cyan-200 btn rounded-full w-14 h-14" />
+              <span className="text-lg text-gray-800">
+                Mymensingh, Bangladesh
+              </span>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <div className="md:w-1/2 p-6 bg-gray-50 rounded-xl shadow-inner">
+          <motion.form
+            className="space-y-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+          >
+            <div>
+              <label className="block text-gray-700 font-medium">
+                Your Name
+              </label>
+              <motion.input
+                type="text"
+                placeholder="John Doe"
+                className="w-full p-3 mt-1 border rounded-lg focus:ring-2 focus:ring-cyan-400"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.2 }}
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium">
+                Your Email
+              </label>
+              <motion.input
+                type="email"
+                placeholder="example@mail.com"
+                className="w-full p-3 mt-1 border rounded-lg focus:ring-2 focus:ring-cyan-400"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium">
+                Your Message
+              </label>
+              <motion.textarea
+                placeholder="Write your message here..."
+                className="w-full p-3 mt-1 border rounded-lg focus:ring-2 focus:ring-cyan-400"
+                rows="4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+              ></motion.textarea>
+            </div>
+
+            <motion.button
+              className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 rounded-lg transition duration-300"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
+              Send Message
+            </motion.button>
+          </motion.form>
         </div>
       </div>
 
-      {/* <section className="my-14 w-fu mx-auto">
-        <div className="flex flex-col md:flex-row p-8 bg-gray-100 ">
-          <div className="w-full md:w-1/2 p-4">
-            <h1 className="text-3xl font-bold text-teal-800">
-              We Value Feedback
-            </h1>
-            <p className="mt-2 text-gray-600">
-              Donec elementum, sapien quis viverra laoreet, mauris lorem gravida
-              ipsum, eu vehicula magna ligula sit amet lectus.
-            </p>
-            <div className="mt-6">
-              <h2 className="text-xl font-semibold text-teal-800">
-                Working Hours
-              </h2>
-              <ul className="mt-2 space-y-2 text-gray-600">
-                <li>✨ Monday to Friday - 08:00 AM to 08:00 PM</li>
-                <li>✨ Saturday - 08:00 AM to 02:00 PM</li>
-                <li>✨ Sunday - Holiday</li>
-              </ul>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 p-4 bg-white rounded-lg shadow-md">
-            <form className="flex flex-col space-y-4 py-5">
-              <input
-                type="text"
-                placeholder="Name*"
-                className="p-3 rounded-md border-gray-200 border-2 focus:outline-none focus:border-blue-500"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Phone Number*"
-                className="p-3 rounded-md border-gray-200 border-2 focus:outline-none focus:border-blue-500"
-                required
-              />
-              <input
-                type="date"
-                placeholder="Enter Date*"
-                className="p-3 rounded-md border-gray-200 border-2 focus:outline-none focus:border-blue-500"
-                required
-              />
-              <textarea
-                placeholder="Message*"
-                className="p-3 rounded-md border-gray-200 border-2 focus:outline-none focus:border-blue-500 h-24"
-                required
-              ></textarea>
-              <button className="bg-teal-800 text-white py-2 px-4 rounded-md flex items-center justify-center hover:bg-gray-800 transition-colors">
-                Send Message ➡
-              </button>
-            </form>
-          </div>
-        </div>
-      </section> */}
-      <ContactPage />
-    </>
+      <div className="w-4/5 mx-auto mt-8 h-64 rounded-lg overflow-hidden">
+        <MapContainer center={position} zoom={13} className="h-full w-full">
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Marker position={position}>
+            <Popup>Our Location: Mymensingh, Bangladesh</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+    </div>
   );
 };
 
