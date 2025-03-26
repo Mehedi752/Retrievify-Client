@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"; // Importing icons for better interaction visuals
 
 const FAQSection = () => {
   const faqs = [
@@ -32,37 +33,37 @@ const FAQSection = () => {
 
   return (
     <div className="w-4/6 mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold text-center mb-3">
+      <h2 className="text-3xl font-bold text-center mb-3 text-gray-800">
         Frequently Asked Questions (FAQ)
       </h2>
-      <p className="text-gray-600 text-center mb-6">
+      <p className="text-gray-600 text-center mb-6 text-lg">
         Easily find answers to common questions about reporting lost items,
         contacting owners, trust scores, and using the chat feature. Whether
         you're looking for a lost item or helping someone else, this guide
         ensures a hassle-free experience.
       </p>
-      <div className="space-y-4">
+      <div className="space-y-6">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border border-gray-300 rounded-lg transition-all"
+            className="border border-gray-300 rounded-lg transition-all hover:shadow-md"
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full text-left p-4 font-semibold text-lg flex justify-between items-center focus:outline-none"
+              className="w-full text-left p-5 font-semibold text-lg flex justify-between items-center focus:outline-none hover:bg-gray-100 rounded-t-lg"
               aria-expanded={openIndex === index}
             >
-              {faq.question}
-              <span
-                className={`transform transition-transform ${
-                  openIndex === index ? "rotate-180" : "rotate-0"
-                }`}
-              >
-                ▼
+              <span className="text-gray-800">{faq.question}</span>
+              <span className="text-xl">
+                {openIndex === index ? (
+                  <IoIosArrowUp />
+                ) : (
+                  <IoIosArrowDown />
+                )}
               </span>
             </button>
             {openIndex === index && (
-              <div className="p-4 text-gray-700 border-t bg-gray-50">
+              <div className="p-5 text-gray-700 bg-gray-50 rounded-b-lg">
                 {faq.answer}
               </div>
             )}
