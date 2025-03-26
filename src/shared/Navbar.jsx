@@ -44,7 +44,7 @@ const Navbar = () => {
               Add Post
             </NavLink>
           </li>
-          {/* <li><Link to={`/borrowedBooks/${user.email}`}>Borrowed Books</Link></li> */}
+          <li><Link to={`/myAddedPosts`}>My Added Posts</Link></li>
         </>
       )}
       <li>
@@ -71,7 +71,6 @@ const Navbar = () => {
           About
         </NavLink>
       </li>
-    </>
   );
 
   const handleLogOut = () => {
