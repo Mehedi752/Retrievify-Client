@@ -1,2 +1,21 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+
+/* Style for the active navigation links */
+.navbar a.active {
+    color: #1a237e;
+    border-bottom: 2px solid #1a237e;
+  }
+
+  .navbar a:hover:not(.active) {
+    color: #1a237e;
+  }
+
+.navbar a:active,
+.navbar a:focus {
+  outline: none;
+  background-color: transparent;
+  box-shadow: none;
+}

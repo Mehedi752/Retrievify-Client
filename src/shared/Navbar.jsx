@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import logoImg from '../assets/logo.png';
 
@@ -6,17 +6,43 @@ import logoImg from '../assets/logo.png';
 const Navbar = () => {
     const { user, signOutUser } = useAuth();
     const links = <>
-        <li><Link to={'/'}>Home</Link></li>
-        {
-            user &&
-            <>
-                <li><Link to={'/posts'}>All Posts</Link></li>
-                <li><Link to={'/addPost'}>Add Post</Link></li>
-                {/* <li><Link to={`/borrowedBooks/${user.email}`}>Borrowed Books</Link></li> */}
-            </>
-        }
-        <li><Link to={'/about'}>About</Link></li>
-    </>
+    <li>
+      <NavLink 
+        to="/" 
+        className={({ isActive }) => (isActive ? 'active' : '')}
+      >
+        Home
+      </NavLink>
+    </li>
+    {user && (
+      <>
+        <li>
+          <NavLink 
+            to="/posts" 
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            All Posts
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/addPost" 
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            Add Post
+          </NavLink>
+        </li>
+      </>
+    )}
+    <li>
+      <NavLink 
+        to="/about" 
+        className={({ isActive }) => (isActive ? 'active' : '')}
+      >
+        About
+      </NavLink>
+    </li>
+  </>
 
     const handleLogOut = () => {
         signOutUser()
