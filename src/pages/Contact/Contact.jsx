@@ -11,7 +11,7 @@ const Contact = () => {
           className="absolute w-full h-full bg-no-repeat bg-cover opacity-50"
         />
         <div className="relative z-10 text-center">
-          <h1 className="text-4xl font-serif font-semibold text-black hob">
+          <h1 className="text-4xl font-serif font-semibold text-black border-b-2 border-cyan-500">
             Contact
           </h1>
           <nav className="mt-2 text-gray-600">
