@@ -63,7 +63,7 @@ const AddPost = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md p-12 rounded-lg lg:mx-[300px] mx-auto">
 
-                    <h1 className="text-2xl font-bold text-center mb-6">Add Post</h1>
+                    <h1 className="text-3xl lg:text-5xl font-bold text-center mb-6">Add Post</h1>
 
                     {/* Post Type (Lost or Found) */}
                     <div className="mb-4">

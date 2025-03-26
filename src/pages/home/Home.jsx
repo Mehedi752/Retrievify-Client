@@ -5,12 +5,13 @@ import ChooseUs from "./ChooseUs";
 import LatestPosts from './LatestPosts';
 
 const Home = () => {
-  return (
-    <div>
-      <Banner></Banner>
-      <LatestPosts></LatestPosts>
-      <FAQSection />
-      <ChooseUs />
-    </div>
-  );
+    return (
+        <div>
+            <Banner></Banner>
+            <LatestPosts></LatestPosts>
+            <FAQSection />
+            <ChooseUs />
+        </div>
+    );
+}
 export default Home;
