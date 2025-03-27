@@ -5,10 +5,10 @@ import "leaflet/dist/leaflet.css";
 import { motion } from "framer-motion";
 
 const Contact = () => {
-  const position = [24.7471, 90.4203];
+  const position = [23.8223, 90.3654];
 
   return (
-    <div className="flex flex-col shadow-2xs bg-gray-100 text-gray-900 p-12 rounded-2xl border border-gray-200">
+    <div className="flex flex-col shadow-2xs bg-gray-100 text-gray-900 p-12  border border-gray-200">
       <div className="flex flex-col md:flex-row">
         <motion.div
           initial={{ opacity: 0 }}
@@ -17,7 +17,7 @@ const Contact = () => {
           className="md:w-1/2 p-6 space-y-6"
         >
           <motion.h1
-            animate={{ x: 50, color: ["#48dbfb", "#fd79a8"] }}
+            animate={{ x: 50, color: ["#1e3a8a", "#dc2626"] }}
             transition={{
               duration: 2,
               delay: 1,
@@ -69,7 +69,7 @@ const Contact = () => {
             >
               <FaMapMarkerAlt className="text-red-500 text-xl bg-cyan-200 btn rounded-full w-14 h-14" />
               <span className="text-lg text-gray-800">
-                Mymensingh, Bangladesh
+                Mirpur, Dhaka, Bangladesh
               </span>
             </motion.div>
           </div>
@@ -125,7 +125,7 @@ const Contact = () => {
             </div>
 
             <motion.button
-              className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 rounded-lg transition duration-300"
+              className="w-full bg-[#1a237e] hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}

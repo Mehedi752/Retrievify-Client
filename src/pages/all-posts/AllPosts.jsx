@@ -81,7 +81,7 @@ const AllPosts = () => {
 
                                     <div className="flex justify-between items-center mt-4">
                                         <p className="text-sm text-gray-500">📅 {new Date(post.timestamp).toLocaleDateString()}</p>
-                                        <span className={`px-3 py-1 text-xs font-bold uppercase rounded-full ${post.type === 'lost' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
+                                        <span className={`px-3 py-1 text-xs font-bold uppercase rounded-full ${post.type === 'lost' ? 'bg-red-100 text-red-600' : post.type === 'found' ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-blue-600'
                                             }`}>
                                             {post.type}
                                         </span>
@@ -105,12 +105,23 @@ const AllPosts = () => {
                                                         View Details
                                                     </button>
                                                 </Link>
-                                                <button
-                                                 onClick={() => navigate('/claim-item', { state: { post } })}
-                                                    className=" bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
-                                                >
-                                                    Claim Item
-                                                </button>
+                                               
+                                                {
+                                                    post.type === "item-recovered" ? (
+                                                        <button disabled
+                                                            className="btn bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
+                                                        >
+                                                            Claim Item
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                        onClick={() => navigate('/claim-item', { state: { post } })}
+                                                            className=" bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
+                                                        >
+                                                            Claim Item
+                                                        </button>
+                                                    )
+                                                }
                                             </div>
                                         )
                                     }

@@ -14,6 +14,8 @@ import ClaimItem from "../pages/ClaimItem/claimItem";
 import ClaimDetails from "../pages/ClaimDetails/ClaimDetails";
 import MyClaims from "../pages/MyClaims/MyClaims";
 import AllClaims from "../pages/AllClaims/AllClaims";
+import UpdatePost from "../pages/update-post/UpdatePost";
+import Donation from "../pages/donation/Donation";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -71,7 +73,15 @@ const router = createBrowserRouter([
       {
         path: '/claim-details/:id',
         element: <ClaimDetails />
-      }
+      },
+      {
+        path: '/posts/update/:id',
+        element: <UpdatePost></UpdatePost>
+      },
+      {
+        path: '/donation',
+        element: <Donation></Donation>
+      },
     ],
   },
 ]);

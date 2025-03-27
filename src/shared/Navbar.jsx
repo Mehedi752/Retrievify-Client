@@ -10,7 +10,7 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             `${
-              isActive ? " text-blue-500 " : ""
+              isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
             } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
           }
           to={"/"}
@@ -24,7 +24,7 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 `${
-                  isActive ? " text-blue-500 " : ""
+                  isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
                 } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
               }
               to={"/posts"}
@@ -36,7 +36,7 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 `${
-                  isActive ? " text-blue-500 " : ""
+                  isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
                 } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
               }
               to={"/addPost"}
@@ -48,7 +48,7 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 `${
-                  isActive ? " text-blue-500 " : ""
+                  isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
                 } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
               }
               to={"/myAddedPosts"}
@@ -90,7 +90,7 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             `${
-              isActive ? " text-blue-500" : ""
+              isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
             } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
           }
           to={"/contact"}
@@ -102,7 +102,7 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             `${
-              isActive ? "text-blue-500" : ""
+              isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
             } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
           }
           to={"/about"}

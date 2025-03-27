@@ -1,43 +1,42 @@
-/* eslint-disable no-unused-vars */
-import { Link } from "react-router";
+import React from "react";
 import { motion } from "framer-motion";
-import errorImg from "../assets/error.jpg";
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
-  return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-center p-4">
-      {/* <motion.h1
-        className="text-6xl font-bold text-gray-800"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        404
-      </motion.h1> */}
-      <motion.img
-        src={errorImg}
-        alt="404 Not Found"
-        className="w-72 md:w-96 mt-6"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      />
-      <motion.p
-        className="text-xl text-gray-600 mt-2"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        Oops! The page you are looking for does not exist.
-      </motion.p>
-      <Link
-        to="/"
-        className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition"
-      >
-        Go Home
-      </Link>
-    </div>
-  );
+    return (
+        <div className="flex items-center justify-center h-screen bg-gradient-to-br from-red-500 to-orange-500 text-white">
+            <div className="text-center">
+                <motion.h1
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    className="text-6xl font-bold mb-6"
+                >
+                    Oops! 404
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="text-2xl mb-6"
+                >
+                    Sorry, the page you're looking for doesn't exist.
+                </motion.p>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                    <Link
+                        to="/"
+                        className="bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition duration-300"
+                    >
+                        Go Back Home
+                    </Link>
+                </motion.div>
+            </div>
+        </div>
+    );
 };
 
 export default ErrorPage;

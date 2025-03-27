@@ -32,7 +32,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center space-x-2">
                 <IoLocationOutline className="text-xl" />
-                <span>123 Jashore, Khulna, Bangladesh</span>
+                <span>Mirpur, Dhaka, Bangladesh</span>
               </li>
               <li className="flex items-center space-x-2">
                 <HiOutlinePhone className="text-xl" />
