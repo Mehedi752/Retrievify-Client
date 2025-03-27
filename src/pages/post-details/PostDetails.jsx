@@ -60,7 +60,7 @@ const PostDetails = () => {
                                     if (user?.email === post.ownerEmail) {
                                         toast.error("You cannot claim your own item!");
                                     } else {
-                                        toast.success("Claimed Successfully!");
+                                        navigate('/claim-item', { state: { post } })
                                     }
                                 }}
                                 className="bg-green-200 hover:bg-green-300 text-green-600 px-4 py-2 rounded-lg font-medium"
