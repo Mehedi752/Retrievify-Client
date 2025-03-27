@@ -61,11 +61,21 @@ const LatestPosts = () => {
                                                         View Details
                                                     </button>
                                                 </Link>
-                                                <button
-                                                    className=" bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
-                                                >
-                                                    Claim Item
-                                                </button>
+                                                {
+                                                    post.type === "item-recovered" ? (
+                                                        <button disabled
+                                                            className="btn bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
+                                                        >
+                                                            Claim Item
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            className=" bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
+                                                        >
+                                                            Claim Item
+                                                        </button>
+                                                    )
+                                                }
                                             </div>
                                         )
                                     }

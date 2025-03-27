@@ -10,6 +10,7 @@ import PostDetails from "../pages/post-details/PostDetails";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import MyAddedPosts from "../pages/my-added-posts/MyAddedPosts";
+import UpdatePost from "../pages/update-post/UpdatePost";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,7 +52,11 @@ const router = createBrowserRouter([
       {
         path: '/myAddedPosts',
         element: <MyAddedPosts></MyAddedPosts>
-      }
+      },
+      {
+        path: '/posts/update/:id',
+        element: <UpdatePost></UpdatePost>
+      },
     ],
   },
 ]);

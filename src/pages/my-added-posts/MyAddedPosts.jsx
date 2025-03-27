@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyAddedPosts = () => {
     const { user } = useAuth();
@@ -16,10 +18,27 @@ const MyAddedPosts = () => {
     });
 
     const handleDelete = async (id) => {
-        if (confirm("Are you sure you want to delete this post?")) {
-            await axiosPublic.delete(`/posts/${id}`);
-            refetch();
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.delete(`/posts/${id}`)
+                    .then(() => {
+                        Swal.fire("Deleted!", "Your post has been deleted.", "success");
+                        refetch();
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        Swal.fire("Oops...", "Something went wrong! Please try again.", "error");
+                    });
+            }
+        });
     };
 
     return (
@@ -52,17 +71,19 @@ const MyAddedPosts = () => {
                                     <td className="p-4 text-center">{new Date(post.timestamp).toLocaleDateString()}</td>
                                     <td className="p-4 text-center">
                                         <span className={`px-3 py-1 font-medium rounded-lg
-                                            ${post.type === 'found' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`}>
+                                            ${post.type === 'found' ? 'bg-green-100 text-green-600' : post.type === 'lost' ? 'bg-red-100 text-red-600' : 'bg-blue-100 text-blue-600'}`}>
                                             {post.type}
                                         </span>
                                     </td>
                                     <td className="p-4 flex justify-center gap-3">
-                                        <button
-                                            className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-lg shadow-md transition"
-                                            onClick={() => console.log("Update Post:", post._id)}
-                                        >
-                                            <FaEdit />
-                                        </button>
+                                        <Link to={`/posts/update/${post._id}`}>
+                                            <button
+                                                className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg shadow-md transition"
+                                                onClick={() => console.log("Update Post:", post._id)}
+                                            >
+                                                <FaEdit />
+                                            </button>
+                                        </Link>
                                         <button
                                             className="bg-red-500 hover:bg-red-700 text-white p-2 rounded-lg shadow-md transition"
                                             onClick={() => handleDelete(post._id)}
