@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"; // Importing icons for better interaction visuals
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FAQSection = () => {
   const faqs = [
@@ -32,41 +33,44 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="w-4/6 mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold text-center mb-3 text-gray-800">
-        Frequently Asked Questions (FAQ)
+    <div className="max-w-3xl mx-auto my-12 p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
+      <h2 className="text-4xl font-bold text-center mb-5 text-gray-900">
+        Frequently Asked Questions
       </h2>
-      <p className="text-gray-600 text-center mb-6 text-lg">
-        Easily find answers to common questions about reporting lost items,
-        contacting owners, trust scores, and using the chat feature. Whether
-        you're looking for a lost item or helping someone else, this guide
-        ensures a hassle-free experience.
+      <p className="text-gray-600 text-center mb-8 text-lg">
+        Find quick answers to common questions about lost items, contacting
+        owners, trust scores, and chat features.
       </p>
-      <div className="space-y-6">
+      <div className="space-y-5">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border border-gray-300 rounded-lg transition-all hover:shadow-md"
+            className="border border-gray-300 rounded-xl shadow-sm transition-all hover:shadow-md"
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full text-left p-5 font-semibold text-lg flex justify-between items-center focus:outline-none hover:bg-gray-100 rounded-t-lg"
+              className="w-full text-left p-5 font-medium text-lg flex justify-between items-center focus:outline-none hover:bg-gray-100 rounded-xl"
               aria-expanded={openIndex === index}
             >
-              <span className="text-gray-800">{faq.question}</span>
-              <span className="text-xl">
-                {openIndex === index ? (
-                  <IoIosArrowUp />
-                ) : (
-                  <IoIosArrowDown />
-                )}
+              <span className="text-gray-900">{faq.question}</span>
+              <span className="text-2xl text-gray-700">
+                {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
               </span>
             </button>
-            {openIndex === index && (
-              <div className="p-5 text-gray-700 bg-gray-50 rounded-b-lg">
-                {faq.answer}
-              </div>
-            )}
+            <AnimatePresence>
+              {openIndex === index && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="p-5 text-gray-700 bg-gray-50 rounded-b-xl border-t border-gray-200">
+                    {faq.answer}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>
