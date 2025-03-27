@@ -55,6 +55,7 @@ const PostDetails = () => {
                                 Go Back
                             </button>
 
+
                             {
                                 post.type === "item-recovered" ? (
                                     <button disabled
@@ -62,7 +63,7 @@ const PostDetails = () => {
                                             if (user?.email === post.ownerEmail) {
                                                 toast.error("You cannot claim your own item!");
                                             } else {
-                                                toast.success("Claimed Successfully!");
+                                                navigate('/claim-item', { state: { post } })
                                             }
                                         }}
                                         className="btn bg-green-200 hover:bg-green-300 text-green-600 px-4 py-2 rounded-lg font-medium"
@@ -71,14 +72,13 @@ const PostDetails = () => {
                                     </button>
                                 ) : (
                                     <button
-                                        onClick={
-                                            () => {
-                                                if (user?.email === post.ownerEmail) {
-                                                    toast.error("You cannot claim your own item!");
-                                                } else {
-                                                    toast.success("Claimed Successfully!");
-                                                }
-                                            }}
+                                        onClick={() => {
+                                            if (user?.email === post.ownerEmail) {
+                                                toast.error("You cannot claim your own item!");
+                                            } else {
+                                                navigate('/claim-item', { state: { post } })
+                                            }
+                                        }}
                                         className="bg-green-200 hover:bg-green-300 text-green-600 px-4 py-2 rounded-lg font-medium"
                                     >
                                         Claim Item

@@ -10,6 +10,10 @@ import PostDetails from "../pages/post-details/PostDetails";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import MyAddedPosts from "../pages/my-added-posts/MyAddedPosts";
+import ClaimItem from "../pages/ClaimItem/claimItem";
+import ClaimDetails from "../pages/ClaimDetails/ClaimDetails";
+import MyClaims from "../pages/MyClaims/MyClaims";
+import AllClaims from "../pages/AllClaims/AllClaims";
 import UpdatePost from "../pages/update-post/UpdatePost";
 import Donation from "../pages/donation/Donation";
 const router = createBrowserRouter([
@@ -53,6 +57,22 @@ const router = createBrowserRouter([
       {
         path: '/myAddedPosts',
         element: <MyAddedPosts></MyAddedPosts>
+      },
+      {
+        path: '/claim-item',
+        element: <ClaimItem></ClaimItem>
+      },
+      {
+        path: '/all-claims',
+        element: <AllClaims />
+      },
+      {
+        path: '/my-claims',
+        element: <MyClaims />
+      },
+      {
+        path: '/claim-details/:id',
+        element: <ClaimDetails />
       },
       {
         path: '/posts/update/:id',

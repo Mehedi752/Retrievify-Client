@@ -56,6 +56,34 @@ const Navbar = () => {
               My Added Post
             </NavLink>
           </li>
+           
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive ? " text-blue-500 " : ""
+                } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+              }
+              to={"/all-claims"}
+            >
+              All Claims (Admin)
+            </NavLink>
+          </li>
+          
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive ? " text-blue-500 " : ""
+                } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+              }
+              to={"/my-claims"}
+            >
+              My Claims
+            </NavLink>
+          </li>
+          
+        
         </>
       )}
       <li>

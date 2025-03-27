@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AllPosts = () => {
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -104,6 +105,7 @@ const AllPosts = () => {
                                                         View Details
                                                     </button>
                                                 </Link>
+                                               
                                                 {
                                                     post.type === "item-recovered" ? (
                                                         <button disabled
@@ -113,6 +115,7 @@ const AllPosts = () => {
                                                         </button>
                                                     ) : (
                                                         <button
+                                                        onClick={() => navigate('/claim-item', { state: { post } })}
                                                             className=" bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
                                                         >
                                                             Claim Item

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LatestPosts = () => {
     const axiosPublic = useAxiosPublic();
-
+    const navigate = useNavigate();
     const { data: latestPosts = [], refetch } = useQuery({
         queryKey: ["latestPosts"],
         queryFn: async () => {
@@ -61,6 +61,7 @@ const LatestPosts = () => {
                                                         View Details
                                                     </button>
                                                 </Link>
+                                                
                                                 {
                                                     post.type === "item-recovered" ? (
                                                         <button disabled
@@ -70,6 +71,7 @@ const LatestPosts = () => {
                                                         </button>
                                                     ) : (
                                                         <button
+                                                        onClick={() => navigate('/claim-item', { state: { post } })}
                                                             className=" bg-green-200 hover:bg-green-300 text-green-600 hover:text-green-700 font-semibold py-2 px-4 rounded-lg transitio"
                                                         >
                                                             Claim Item
