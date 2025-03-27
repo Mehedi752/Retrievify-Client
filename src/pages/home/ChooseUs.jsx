@@ -1,10 +1,12 @@
 import React from "react";
 import { FaShieldAlt, FaStar, FaUsers } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const ChooseUs = () => {
   return (
-    <div className="my-16 text-center">
-      <h2 className="text-4xl font-bold text-gray-900">Why Choose Us?</h2>
+    <div className="bg-gray-100 py-12 text-center">
+    <div className="container mx-auto">
+    <h2 className="text-4xl font-bold text-gray-900">Why Choose Us?</h2>
       <p className="mt-3 text-gray-600 text-lg max-w-lg mx-auto">
         We make the lost and found process simpler, safer, and more effective
         with a trusted community and secure platform.
@@ -47,11 +49,17 @@ const ChooseUs = () => {
         ))}
       </div>
 
-      <div className="text-center mt-12">
-        <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:scale-105">
+      <div className="text-center mt-6">
+        <motion.button
+          className="bg-[#1a237e] hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
           Report a Lost Item
-        </button>
+        </motion.button>
       </div>
+    </div>
     </div>
   );
 };
