@@ -48,13 +48,18 @@ const UpdatePost = () => {
         axiosPublic.put(`/posts/${id}`, updatedPost)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Post Updated Successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate('/donation');
+                    if (data.type === "item-recovered") {
+                        navigate('/donation');
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Your post Updated Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/myAddedPosts');
+                    }
                 }
             })
             .catch(err => {
