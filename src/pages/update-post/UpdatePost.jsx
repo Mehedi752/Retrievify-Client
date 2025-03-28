@@ -54,7 +54,7 @@ const UpdatePost = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/myAddedPosts');
+                    navigate('/donation');
                 }
             })
             .catch(err => {

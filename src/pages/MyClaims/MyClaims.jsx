@@ -28,7 +28,7 @@ const MyClaims = () => {
                 title: 'Claim Deleted',
                 text: 'Your claim has been successfully deleted',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2000
             });
         },
         onError: (error) => {
