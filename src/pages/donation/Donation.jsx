@@ -20,9 +20,30 @@ const Donate = () => {
             Swal.fire("Error", "Please provide a rating and feedback!", "error");
             return;
         }
-        Swal.fire("Thank You!", "Your feedback has been submitted.", "success");
-        setRating(0);
-        setFeedback("");
+        const feedbackData = {
+            name: user?.displayName || "Anonymous",
+            email: user?.email,
+            photo: user?.photoURL,
+            rating,
+            feedback,
+            date: new Date().toLocaleDateString(),
+        };
+        axiosPublic.post("/feedbacks", feedbackData)
+            .then((res) => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Feedback Submitted",
+                        text: "Thank you for your feedback!",
+                    });
+                    setRating(0);
+                    setFeedback("");
+                }
+            })
+            .catch((error) => {
+                Swal.fire("Error", "Failed to submit feedback!", "error");
+
+            })
     };
 
     const handleDonate = async () => {
@@ -43,7 +64,7 @@ const Donate = () => {
         const response = await axios.post("http://localhost:5000/create-payment-method", payment)
         console.log(response);
 
-        if(response.data?.gatewayURL){
+        if (response.data?.gatewayURL) {
             window.location.replace(response.data.gatewayURL);
         }
 
