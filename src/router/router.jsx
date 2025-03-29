@@ -18,6 +18,7 @@ import UpdatePost from "../pages/update-post/UpdatePost";
 import Donation from "../pages/donation/Donation";
 import SuccessPaymentModal from "../pages/donation/SuccessPayment";
 import Feedbacks from "../pages/feedbacks/Feedbacks";
+import ChatApp from "../pages/ChatApp/ChatApp";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: '/feedbacks',
         element: <Feedbacks></Feedbacks>
+      },
+      {
+        path: '/chat/:id',
+        element: <ChatApp></ChatApp>
       }
     ],
   },
