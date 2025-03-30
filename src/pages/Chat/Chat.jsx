@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Container, Stack, TextField, Typography } from "@mui/material";
 import { useSocket } from "../../provider/SocketProvider";
 import { useSearchParams } from "react-router-dom";
 
@@ -7,7 +6,7 @@ const Chat = () => {
   const socket = useSocket();
   const [searchParams] = useSearchParams();
 
-  // Get the current user and target user from the URL search params
+  // Get current user and target user from URL query parameters
   const currentUser = searchParams.get("currentUser") || "Guest";
   const targetUser = searchParams.get("targetUser") || "";
 
@@ -45,39 +44,55 @@ const Chat = () => {
       message,
       fromUser: currentUser,
     });
-
     setMessages((prev) => [...prev, { fromUser: currentUser, message }]);
     setMessage("");
   };
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ height: 500 }} />
-      <Typography variant="h6">Socket ID: {socketID}</Typography>
-      <Typography variant="h6">Chat with {targetUser || "No user selected"}</Typography>
+    <div className="max-w-3xl mx-auto p-4 border border-gray-300 rounded-md shadow-sm">
+      <div className="mb-4 border-b border-gray-200 pb-2">
+        <p className="text-sm text-gray-600">
+          <span className="font-semibold">Socket ID:</span> {socketID}
+        </p>
+        <p className="text-lg font-medium">
+          Chat with: {targetUser ? targetUser : "No user selected"}
+        </p>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <TextField
+      <div className="h-80 overflow-y-auto p-4 bg-gray-50 border border-gray-200 rounded-md mb-4">
+        {messages.map((msg, i) => (
+          <div key={i} className="mb-2">
+            {msg.fromUser === currentUser ? (
+              <p className="text-blue-600">
+                <span className="font-semibold">Me: </span>
+                {msg.message}
+              </p>
+            ) : (
+              <p className="text-green-600">
+                <span className="font-semibold">{msg.fromUser}: </span>
+                {msg.message}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
+        <input
+          type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          label="Message"
-          variant="outlined"
-          fullWidth
-          margin="normal"
+          placeholder="Type your message..."
+          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <Button type="submit" variant="contained" color="primary">
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
           Send
-        </Button>
+        </button>
       </form>
-
-      <Stack spacing={2} sx={{ mt: 2 }}>
-        {messages.map((msg, i) => (
-          <Typography key={i} variant="body1">
-            {msg.fromUser === currentUser ? "Me: " : `${msg.fromUser}: `} {msg.message}
-          </Typography>
-        ))}
-      </Stack>
-    </Container>
+    </div>
   );
 };
 

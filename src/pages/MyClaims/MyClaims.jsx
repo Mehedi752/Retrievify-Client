@@ -20,7 +20,21 @@ const MyClaims = () => {
         }
     });
 
-    //nagivate to chat
+    // [
+    //     {
+    //       "_id": "67e845ae407416054450a043",
+    //       "postId": "67e30843e89e712b31db91bb",
+    //       "postAuthor": "mehedihasansagor301@gmail.com",
+    //       "claimantName": "Nayeb Qureshi",
+    //       "claimantEmail": "nayebqureshi4@gmail.com",
+    //       "claimantImage": "https://lh3.googleusercontent.com/a/ACg8ocLcMoawSI7NUjgMbjeMq8G7jYYkMsakErnO6P7Ex1gA7_cgBD5hzA=s96-c",
+    //       "receiptUrl": "https://i.ibb.co/4Z90Gy31/tailwind.png",
+    //       "imageUrl": "https://i.ibb.co/z07t0jH/netlify.png",
+    //       "details": "gdhgghghfggfhghghhfghgfhgfhgfhgfhgfhfbgfghfkjnhkjfgnhkjfnghkjnfgjibnhkjfghnkjfgnhkjfgn",
+    //       "status": "verified",
+    //       "createdAt": "2025-03-29T19:10:38.356Z"
+    //     }
+    //   ]
 
  
     const { mutate: deleteClaim } = useMutation({
@@ -144,9 +158,9 @@ const MyClaims = () => {
                                     {/* Chat Column */}
                                     <td>
                                         {claim.status === 'verified' ? (
-                                            <button  title="Chat with item owner">
+                                            <Link to={`/chat?currentUser=${claim.claimantEmail}&targetUser=${claim.postAuthor}`} title="Chat with item owner">
                                                 <FaComments className="text-green-500 text-xl cursor-pointer" />
-                                            </button>
+                                            </Link>
                                         ) : (
                                             <FaTimesCircle className="text-gray-400 text-xl" title="Cannot chat unless verified" />
                                         )}
