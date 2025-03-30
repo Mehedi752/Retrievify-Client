@@ -140,7 +140,7 @@ const MyClaims = () => {
                                     {/* Chat Column */}
                                     <td>
                                         {claim.status === 'verified' ? (
-                                            <Link to={`/chat/${claim._id}`} title="Chat with item owner">
+                                            <Link to={`/chats/${claim._id}`} title="Chat with item owner">
                                                 <FaComments className="text-green-500 text-xl cursor-pointer" />
                                             </Link>
                                         ) : (

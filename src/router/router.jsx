@@ -19,6 +19,7 @@ import Donation from "../pages/donation/Donation";
 import SuccessPaymentModal from "../pages/donation/SuccessPayment";
 import Feedbacks from "../pages/feedbacks/Feedbacks";
 import ChatApp from "../pages/ChatApp/ChatApp";
+import ChatLayout from "../layout/ChatLayout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -93,10 +94,21 @@ const router = createBrowserRouter([
         path: '/feedbacks',
         element: <Feedbacks></Feedbacks>
       },
+    ],
+  },
+  {
+    path: "/chats",
+    element: <ChatLayout></ChatLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        path: '/chat/:id',
+        path: '/chats',
         element: <ChatApp></ChatApp>
-      }
+      },
+      {
+        path: '/chats/:receieverEmail',
+        element: <ChatApp></ChatApp>
+      },
     ],
   },
 ]);

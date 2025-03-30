@@ -9,7 +9,7 @@ const ChatSidebar = () => {
 
 
     return (
-        <div className="w-1/4 bg-white shadow-lg p-4 flex flex-col border-r">
+        <div className="w-1/3   bg-white shadow-lg p-4 flex flex-col border-r">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-bold">Chats</h2>
                 <button
