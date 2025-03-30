@@ -17,6 +17,7 @@ import AllClaims from "../pages/AllClaims/AllClaims";
 import UpdatePost from "../pages/update-post/UpdatePost";
 import Donation from "../pages/donation/Donation";
 import SuccessPaymentModal from "../pages/donation/SuccessPayment";
+import Chat from "../pages/Chat/Chat";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: '/success',
         element: <SuccessPaymentModal></SuccessPaymentModal>
+      },
+      {
+        path: "Chat" ,
+        element:<Chat></Chat>
       }
     ],
   },

@@ -10,6 +10,7 @@ const MyClaims = () => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic(); 
     const queryClient = useQueryClient();
+    //const navigate = useNavigate();
 
     const { data: claims = [], isLoading, refetch } = useQuery({
         queryKey: ['claims', user?.email],
@@ -18,6 +19,9 @@ const MyClaims = () => {
             return res.data;
         }
     });
+
+    //nagivate to chat
+
  
     const { mutate: deleteClaim } = useMutation({
         mutationFn: (id) => axiosPublic.delete(`/claims/${id}`),
@@ -140,9 +144,9 @@ const MyClaims = () => {
                                     {/* Chat Column */}
                                     <td>
                                         {claim.status === 'verified' ? (
-                                            <Link to={`/chat/${claim._id}`} title="Chat with item owner">
+                                            <button  title="Chat with item owner">
                                                 <FaComments className="text-green-500 text-xl cursor-pointer" />
-                                            </Link>
+                                            </button>
                                         ) : (
                                             <FaTimesCircle className="text-gray-400 text-xl" title="Cannot chat unless verified" />
                                         )}

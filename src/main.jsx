@@ -10,16 +10,19 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { SocketProvider } from './provider/SocketProvider.jsx';
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <SocketProvider>
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         <ToastContainer></ToastContainer>
       </QueryClientProvider>
     </AuthProvider>
+    </SocketProvider>
   </StrictMode>
 )
