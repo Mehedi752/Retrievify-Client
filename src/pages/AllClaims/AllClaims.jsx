@@ -167,7 +167,7 @@ const AllClaims = () => {
                                         <td>
                                             {claim.status === 'verified' ? (
                                                 <Link
-                                                    to={`/chat/${claim._id}`}
+                                                    to={`/chat?currentUser=${user.email}&targetUser=${claim.postAuthor}`}
                                                     className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
                                                 >
                                                     <FaComments className="text-blue-500" /> Chat
