@@ -100,7 +100,8 @@ const AllClaims = () => {
                                     <th>Evidence</th>
                                     <th>Status</th>
                                     <th>Actions</th>
-                                    <th>Chat</th> {/* New Chat Column */}
+                                    <th>Chat(Climant)</th> 
+                                    <th>Chat(Who Got)</th> 
                                 </tr>
                             </thead>
                             <tbody>
@@ -167,6 +168,24 @@ const AllClaims = () => {
                                             {claim.status === 'verified' ? (
                                                 <Link
                                                     to={`/chats/${claim?.claimantEmail}`}
+                                                    className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
+                                                >
+                                                    <FaComments className="text-blue-500" /> Chat
+                                                </Link>
+                                            ) : (
+                                                <button
+                                                    className="btn btn-disabled w-32 btn-sm flex items-center gap-1 cursor-not-allowed"
+                                                    title="Chat unavailable until verified"
+                                                >
+                                                    <FaTimesCircle className="text-red-500" /> Cannot Chat
+                                                </button>
+                                            )}
+                                        </td>
+                                        
+                                        <td>
+                                            {claim.status === 'verified' ? (
+                                                <Link
+                                                    to={`/chats/${claim?.postAuthor}`}
                                                     className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
                                                 >
                                                     <FaComments className="text-blue-500" /> Chat

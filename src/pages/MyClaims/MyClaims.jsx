@@ -1,14 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import useAuth from '../../hooks/useAuth';
-import useAxiosPublic from '../../hooks/useAxiosPublic'; 
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { FaReceipt, FaImage, FaInfoCircle, FaClock, FaCheckCircle, FaTimesCircle, FaTrash, FaComments } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 
 const MyClaims = () => {
     const { user } = useAuth();
-    const axiosPublic = useAxiosPublic(); 
+    const axiosPublic = useAxiosPublic();
     const queryClient = useQueryClient();
 
     const { data: claims = [], isLoading, refetch } = useQuery({
@@ -18,7 +18,7 @@ const MyClaims = () => {
             return res.data;
         }
     });
- 
+
     const { mutate: deleteClaim } = useMutation({
         mutationFn: (id) => axiosPublic.delete(`/claims/${id}`),
         onSuccess: () => {
@@ -63,7 +63,7 @@ const MyClaims = () => {
             cancelButtonColor: '#3085d6',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
-            if (result.isConfirmed) { 
+            if (result.isConfirmed) {
                 deleteClaim(claimId);
                 refetch();
             }
@@ -75,7 +75,7 @@ const MyClaims = () => {
     return (
         <div className="container mx-auto px-4 py-8 max-w-6xl">
             <h1 className="text-3xl font-bold mb-8 text-center">My Claims</h1>
-            
+
             {claims.length === 0 ? (
                 <div className="text-center py-12">
                     <h2 className="text-xl font-medium mb-4">You haven't made any claims yet</h2>
@@ -91,7 +91,8 @@ const MyClaims = () => {
                                 <th>Item</th>
                                 <th>Claim Details</th>
                                 <th>Status</th>
-                                <th>Chat</th>
+                                <th>Chat(Admin)</th>
+                                <th>Chat(Who Got)</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -140,23 +141,49 @@ const MyClaims = () => {
                                     {/* Chat Column */}
                                     <td>
                                         {claim.status === 'verified' ? (
-                                            <Link to={`/chats/${claim.climantEmail}`} title="Chat with item owner">
-                                                <FaComments className="text-green-500 text-xl cursor-pointer" />
+                                           <Link
+                                           to={`/chats/mehedihasansagor301@gmail.com`}
+                                           className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
+                                       >
+                                           <FaComments className="text-blue-500" /> Chat
+                                       </Link>
+                                        ) : (
+                                            <button
+                                            className="btn btn-disabled w-32 btn-sm flex items-center gap-1 cursor-not-allowed"
+                                            title="Chat unavailable until verified"
+                                        >
+                                            <FaTimesCircle className="text-red-500" /> Cannot Chat
+                                        </button>
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        {claim.status === 'verified' ? (
+                                            <Link
+                                                to={`/chats/${claim?.postAuthor}`}
+                                                className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
+                                            >
+                                                <FaComments className="text-blue-500" /> Chat
                                             </Link>
                                         ) : (
-                                            <FaTimesCircle className="text-gray-400 text-xl" title="Cannot chat unless verified" />
+                                            <button
+                                            className="btn btn-disabled w-32 btn-sm flex items-center gap-1 cursor-not-allowed"
+                                            title="Chat unavailable until verified"
+                                        >
+                                            <FaTimesCircle className="text-red-500" /> Cannot Chat
+                                        </button>
                                         )}
                                     </td>
 
                                     <td>
                                         <div className="flex gap-2">
-                                            <Link 
-                                                to={`/claim-details/${claim._id}`} 
+                                            <Link
+                                                to={`/claim-details/${claim._id}`}
                                                 className="btn btn-ghost btn-sm outline"
                                             >
                                                 Details
                                             </Link>
-                                            <button 
+                                            <button
                                                 onClick={() => handleDelete(claim._id)}
                                                 className="btn btn-ghost btn-sm text-red-500 cursor-pointer"
                                                 disabled={claim.status === 'verified'}
