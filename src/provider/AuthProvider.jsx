@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser?.email) {
                 setUser(currentUser);
                 setLoading(false);
-                const user = { email: currentUser.email };
+                const user = { email: currentUser.email, name: currentUser.displayName, photoURL: currentUser.photoURL };
 
                 axiosPublic.post('/users', user)
                     .then(res => {

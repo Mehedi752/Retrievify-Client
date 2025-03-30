@@ -18,6 +18,15 @@ const ChatApp = () => {
     },
 });
 
+ 
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['chatUsers', sender.email],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/get-chats/${sender._id}`);
+            return res.data;
+        },
+    });
+     
 const { data: receiver = {} } = useQuery({
   queryKey: ['currentUser', receieverEmail],
   queryFn: async () => {
@@ -28,8 +37,8 @@ const { data: receiver = {} } = useQuery({
   const socket = io("http://localhost:5000"); 
   return (
     <div className="flex h-[calc(100vh-110px)] bg-gray-100">
-      <ChatSidebar  />      
-      <ChatContainer sender={sender} receiver={receiver} socket={socket} />
+      <ChatSidebar users={users} />      
+      <ChatContainer refetchChats={refetch} sender={sender} receiver={receiver} socket={socket} />
     </div>
   );
 };
