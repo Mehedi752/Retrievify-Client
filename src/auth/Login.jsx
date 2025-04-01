@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import authImg from '../assets/auth.jpg';
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ const Login = () => {
                 console.log(res);
                 setUser(res.user);
                 setLoading(false);
+                toast.success('Login successful!');
                 navigate(location.state ? location.state : '/');
             })
             .catch((error) => {
@@ -36,6 +38,25 @@ const Login = () => {
         signInWithGoogle()
             .then((res) => {
                 setUser(res.user);
+                const user = {
+                    name: res.user.displayName,
+                    email: res.user.email,
+                    photoURL: res.user.photoURL,
+                    role: 'user',
+                    timestamp: new Date().toISOString(),
+                }
+
+                axiosPublic.post('/users', user)
+                    .then(res => {
+                        //console.log('User added to database : ', res.data);
+                        if (res.data.insertedId) {
+                            toast.success(`Welcome ${currentUser.displayName} to our website`);
+                        }
+                    })
+                    .catch(err => {
+                        //console.log('Error adding user to database : ', err);
+                    })
+
                 navigate(location.state ? location.state : '/');
             })
             .catch((error) => {
