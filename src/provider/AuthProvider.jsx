@@ -59,22 +59,8 @@ const AuthProvider = ({ children }) => {
             if (currentUser?.email) {
                 setUser(currentUser);
                 setLoading(false);
-                const user = { email: currentUser.email, name: currentUser.displayName, photoURL: currentUser.photoURL };
+            }
 
-                axiosPublic.post('/users', user)
-                    .then(res => {
-                        //console.log('User added to database : ', res.data);
-                        if(res.data.insertedId){
-                            toast.success(`Welcome ${currentUser.displayName} to our website`);
-                        }
-                    })
-                    .catch(err => {
-                        //console.log('Error adding user to database : ', err);
-                    })
-                
-
-            } 
-            
             else {
                 setUser(null);
                 setLoading(false);

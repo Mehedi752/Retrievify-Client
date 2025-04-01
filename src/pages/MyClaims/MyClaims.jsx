@@ -142,7 +142,7 @@ const MyClaims = () => {
                                     <td>
                                         {claim.status === 'verified' ? (
                                            <Link
-                                           to={`/chats/mehedihasansagor301@gmail.com`}
+                                           to={`/chats/mehedi@gmail.com`}
                                            className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
                                        >
                                            <FaComments className="text-blue-500" /> Chat

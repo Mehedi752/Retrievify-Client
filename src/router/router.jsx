@@ -20,6 +20,7 @@ import SuccessPaymentModal from "../pages/donation/SuccessPayment";
 import Feedbacks from "../pages/feedbacks/Feedbacks";
 import ChatApp from "../pages/ChatApp/ChatApp";
 import ChatLayout from "../layout/ChatLayout";
+import PrivateAdmin from "../provider/PrivateAdmin";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/all-claims',
-        element: <AllClaims />
+        element: <PrivateAdmin><AllClaims /></PrivateAdmin>
       },
       {
         path: '/my-claims',

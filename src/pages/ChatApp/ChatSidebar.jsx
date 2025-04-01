@@ -1,14 +1,14 @@
 import React from "react";
 import { RxAvatar } from "react-icons/rx";
-import { FaPlus } from "react-icons/fa6"; 
-import { Link, useParams } from "react-router-dom"; 
-import {  formatDistanceToNowStrict } from 'date-fns';
+import { FaPlus } from "react-icons/fa6";
+import { Link, useParams } from "react-router-dom";
+import { formatDistanceToNowStrict } from 'date-fns';
 
 
 const ChatSidebar = ({ users }) => {
-    
+
     const timeAgo = (timestamp) => {
-        const agoTime =  formatDistanceToNowStrict(new Date(timestamp), { addSuffix: true })
+        const agoTime = formatDistanceToNowStrict(new Date(timestamp), { addSuffix: true })
             .replace('minutes', 'min')
             .replace('minute', 'min')
             .replace('hours', 'h')
@@ -24,15 +24,15 @@ const ChatSidebar = ({ users }) => {
 
         if (agoTime.includes('seconds')) {
             return 'Just Now';
-            
+
         }
         return agoTime;
     };
-    
-  const { receieverEmail} = useParams() 
+
+    const { receieverEmail } = useParams()
 
     return (
-        <div className="w-1/3   bg-white shadow-lg p-4 flex flex-col border-r">
+        <div className="w-1/3  bg-white shadow-lg p-4 flex flex-col border-r border-r-gray-200">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-bold">Chats</h2>
                 <button
@@ -49,13 +49,14 @@ const ChatSidebar = ({ users }) => {
                 {
                     (users.length > 0) && users.map((user) => {
                         return (
-                            <Link to={`/chats/${user.email}`} className={`${receieverEmail===user.email ? "bg-cyan-200" : ""} flex items-center gap-3 cursor-pointer border rounded-2xl border-gray-300 p-2 `}>
-                                <div className="w-12 h-12 rounded-full overflow-hidden">
-                                    <RxAvatar className="w-full h-full" />
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-black">{user?.email}</p>
-                                    <p className="text-gray-500 text-sm">{user?.name ? "" : "UserName"}: {user?.lastMessage} · {timeAgo(user.timestamp)}</p>
+                            <Link to={`/chats/${user.email}`} className={`${receieverEmail === user.email ? "bg-cyan-200" : "bg-gray-200"} flex items-center gap-3 cursor-pointer border rounded-lg border-gray-300 p-2 `}>
+                                <img src={user.photoURL} alt="" className="w-12 h-12 rounded-full mr-2" />
+                                <div className="flex flex-col w-full">
+                                    <div className="flex justify-between items-center ">
+                                        <h3 className="text-lg">{user ? `${user?.userName}` : "Chat"}</h3>
+                                        <p className="">{timeAgo(user.timestamp)}</p>
+                                    </div>
+                                    <p className="text-gray-500 text-sm">{user?.userName ? "" : "UserName"} {user?.lastMessage}</p>
                                 </div>
                             </Link>
                         )

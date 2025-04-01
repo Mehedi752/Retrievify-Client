@@ -5,6 +5,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import authImg from '../assets/auth.jpg';
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
@@ -14,11 +16,10 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = async (data) => {
         const { name, email, password, photoURL } = data;
-        const user = { name, email, password, photoURL };
-        console.log(user);
 
         createNewUser(email, password)
             .then((res) => {
@@ -27,27 +28,25 @@ const Register = () => {
                 updateProfileUser({ displayName: name, photoURL: photoURL })
                     .then(() => {
 
-                        const userInfo = {
+                        const user = {
                             name,
                             email,
-                            photoURL
+                            photoURL,
+                            role: 'user',
+                            timestamp: new Date().toISOString(),
                         }
 
-                        // axiosPublic.post('/users', userInfo)
-                        //     .then((res) => {
-                        //         console.log(res);
-                        //         if (res.data.insertedId) {
-                        //             console.log('User registered successfully');
-                        //         }
-                        //     })
+                        axiosPublic.post('/users', user)
+                            .then(res => {
+                                //console.log('User added to database : ', res.data);
+                                if (res.data.insertedId) {
+                                    toast.success(`Welcome ${currentUser.displayName} to our website`);
+                                }
+                            })
+                            .catch(err => {
+                                //console.log('Error adding user to database : ', err);
+                            })
 
-
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Registered Successfully',
-                            text: 'You have been registered successfully',
-                            timer: 1500,
-                        });
                         navigate(location.state ? location.state : '/');
                     })
                     .catch((error) => {
@@ -61,7 +60,7 @@ const Register = () => {
     return (
         <div className="bg-base-200 pt-12">
             <div className="container mx-auto py-[72px] px-6 flex items-center justify-between">
-                 <img src={authImg} alt="" className="w-[500px] h-[500px]" />
+                <img src={authImg} alt="" className="w-[500px] h-[500px]" />
                 <div className="w-full p-12 space-y-4 bg-white rounded shadow-xl border border-gray-200 lg:mx-[150px]">
                     <h1 className="text-2xl font-bold text-center">Register</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
