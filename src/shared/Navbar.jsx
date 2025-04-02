@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 import logoImg from "../assets/logo.png";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { BsChatLeftDots } from "react-icons/bs"; 
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
@@ -14,8 +15,18 @@ const Navbar = () => {
       const res = await axiosPublic.get(`/users/${user?.email}`);
       return res.data;
     },
+  }); 
+  const { data: users = [], } = useQuery({
+    queryKey: ['chatUsers', currentUser?.email],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/get-chats/${currentUser._id}`);
+      return res.data;
+    },
   });
-  console.log('Current User : ', currentUser);
+
+  const count = users.filter(user => user.isRead).length
+
+
   const links = (
     <>
       <li>
@@ -107,7 +118,7 @@ const Navbar = () => {
 
         </>
       )}
-  
+
       <li>
         <NavLink
           className={({ isActive }) =>
@@ -153,6 +164,8 @@ const Navbar = () => {
       });
   };
 
+
+
   return (
     <div className=" bg-cyan-100 py-5">
       <div className="md:w-11/12 mx-auto">
@@ -196,6 +209,19 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div className="navbar-end gap-5">
+            {user?.email ? (
+              
+                <Link 
+                to={"/chats"}
+                className="flex items-center relative "
+              >
+                <div>
+                  <BsChatLeftDots className="w-6 font-extrabold h-6" />
+                  <sup className="-top-2 absolute -right-4">{`(${count})`}</sup>
+                  </div>
+                </Link>
+
+            ): ''}
             {user && user.photoURL ? (
               <div className="relative group">
                 <title>{user.email}</title>
