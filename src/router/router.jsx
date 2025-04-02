@@ -21,6 +21,7 @@ import Feedbacks from "../pages/feedbacks/Feedbacks";
 import ChatApp from "../pages/ChatApp/ChatApp";
 import ChatLayout from "../layout/ChatLayout";
 import PrivateAdmin from "../provider/PrivateAdmin";
+import MyProfile from "../pages/my-profile/MyProfile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path:"/contact",
-        element:<Contact/>
+        path: "/contact",
+        element: <Contact />
       },
       {
         path: "/auth/register",
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: '/my-claims',
         element: <MyClaims />
+      },
+      {
+        path: '/my-profile',
+        element: <MyProfile></MyProfile>
       },
       {
         path: '/claim-details/:id',

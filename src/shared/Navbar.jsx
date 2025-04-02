@@ -91,9 +91,23 @@ const Navbar = () => {
             </NavLink>
           </li>
 
+          {currentUser?.role === "user" && (
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  `${isActive ? " border-b-2 text-blue-500 border-blue-600 " : ""
+                  } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+                }
+                to={"/my-profile"}
+              >
+                My Profile
+              </NavLink>
+            </li>
+          )}
 
         </>
       )}
+  
       <li>
         <NavLink
           className={({ isActive }) =>
