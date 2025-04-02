@@ -35,7 +35,7 @@ const ChatApp = () => {
       return res.data;
     },
   });
-  
+  const count = users.filter(user=>user.isRead).length 
   console.log('Users : ', users);
   console.log('Sender : ', sender);
   console.log('Receiver : ', receiver);
@@ -43,7 +43,7 @@ const ChatApp = () => {
   const socket = io("http://localhost:5000");
   return (
     <div className="flex h-[calc(100vh-110px)] bg-gray-100">
-      <ChatSidebar users={users} />
+      <ChatSidebar users={users} count={count} />
       <ChatContainer refetchChats={refetch} sender={sender} receiver={receiver} socket={socket} />
     </div>
   );
