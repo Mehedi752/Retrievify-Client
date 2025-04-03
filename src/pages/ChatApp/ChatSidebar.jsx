@@ -54,7 +54,7 @@ const ChatSidebar = ({ users, count }) => {
                                         <h3 className="text-lg">{user ? `${user?.userName}` : "Chat"}</h3>
                                         <p className="">{timeAgo(user.timestamp)}</p>
                                         {
-                                            user.isRead && <p className="text-blue-500 absolute right-1"><FaRegHandPointLeft />
+                                            user.isRead && <p className="text-blue-500 absolute right-1 top-10"><FaRegHandPointLeft />
 </p>
                                         }
                                     </div>
