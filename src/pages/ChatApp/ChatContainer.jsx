@@ -37,15 +37,17 @@ const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
     useEffect(() => {
         if (!socket) return;
         const handleReceiveMessage = (message) => {
-            (receiver?._id === message.sender) && socket.emit('messageRead', message._id);
-            setMessages(() => [...messages, message]);
+            if(receiver?._id === message.sender){
+                socket.emit('messageRead', message._id);
+                setMessages((prev) => [...prev, message]);
+            }
         };
         socket.on("receiveMessage", handleReceiveMessage);
 
         return () => {
             socket.off("receiveMessage", handleReceiveMessage);
         };
-    }, [socket, messages, receiver?._id]);
+    }, [socket, receiver?._id]);
 
     useEffect(() => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
