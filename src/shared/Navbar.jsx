@@ -32,8 +32,9 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
-            } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+            isActive
+              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/"}
         >
@@ -45,8 +46,9 @@ const Navbar = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `${isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
-                } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+                isActive
+                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/posts"}
             >
@@ -56,8 +58,9 @@ const Navbar = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `${isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
-                } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+                isActive
+                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/addPost"}
             >
@@ -67,21 +70,23 @@ const Navbar = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `${isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
-                } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+                isActive
+                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/myAddedPosts"}
             >
               My Added Post
             </NavLink>
           </li>
-
+  
           {currentUser?.role === "admin" && (
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  `${isActive ? " border-b-2 text-blue-500 border-blue-600 " : ""
-                  } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+                  isActive
+                    ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+                    : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
                 }
                 to={"/all-claims"}
               >
@@ -89,25 +94,27 @@ const Navbar = () => {
               </NavLink>
             </li>
           )}
-
+  
           <li>
             <NavLink
               className={({ isActive }) =>
-                `${isActive ? " border-b-2 text-blue-500 border-blue-600 " : ""
-                } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+                isActive
+                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/my-claims"}
             >
               My Claims
             </NavLink>
           </li>
-
+  
           {currentUser?.role === "user" && (
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  `${isActive ? " border-b-2 text-blue-500 border-blue-600 " : ""
-                  } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+                  isActive
+                    ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+                    : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
                 }
                 to={"/my-profile"}
               >
@@ -115,15 +122,15 @@ const Navbar = () => {
               </NavLink>
             </li>
           )}
-
         </>
       )}
-
+  
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
-            } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+            isActive
+              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/contact"}
         >
@@ -133,8 +140,9 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
-            } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+            isActive
+              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/about"}
         >
@@ -144,8 +152,9 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${isActive ? "border-b-2 text-blue-500 border-blue-600" : ""
-            } text-gray-600 font-medium px-2 py-2 rounded-md duration-1000`
+            isActive
+              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
+              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/feedbacks"}
         >
@@ -154,6 +163,8 @@ const Navbar = () => {
       </li>
     </>
   );
+  
+  
   const handleLogOut = () => {
     signOutUser()
       .then(() => {
@@ -163,8 +174,6 @@ const Navbar = () => {
         console.log(error);
       });
   };
-
-
 
   return (
     <div className=" bg-cyan-100 py-5">
@@ -224,7 +233,6 @@ const Navbar = () => {
             ): ''}
             {user && user.photoURL ? (
               <div className="relative group">
-                <title>{user.email}</title>
                 <img
                   src={user.photoURL}
                   alt=""
