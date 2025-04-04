@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CiCamera, CiVideoOn } from "react-icons/ci";
 import { MdCall, MdOutlineAttachFile, MdOutlineEmojiEmotions } from "react-icons/md";
 import { format } from "date-fns";
-import Dropdown from "./dropdown";
+import Dropdown from "./Dropdown";
 import Swal from "sweetalert2";
 
 

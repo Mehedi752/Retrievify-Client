@@ -10,7 +10,7 @@ import PostDetails from "../pages/post-details/PostDetails";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import MyAddedPosts from "../pages/my-added-posts/MyAddedPosts";
-import ClaimItem from "../pages/ClaimItem/claimItem";
+import ClaimItem from "../pages/ClaimItem/ClaimItem";
 import ClaimDetails from "../pages/ClaimDetails/ClaimDetails";
 import MyClaims from "../pages/MyClaims/MyClaims";
 import AllClaims from "../pages/AllClaims/AllClaims";

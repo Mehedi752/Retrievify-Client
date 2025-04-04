@@ -64,14 +64,14 @@ const MyAddedPosts = () => {
                                     <td className="p-4 text-center">{index + 1}</td>
                                     <td className="p-4 text-left font-semibold">{post.name}</td>
                                     <td className="p-4 text-center">
-                                        <span className="bg-gray-500 text-white px-3 py-2 rounded-lg text-sm">
+                                        <span className="relative inline-block px-3 py-2 text-sm text-black rounded-lg bg-black/10 backdrop-blur-2xl border border-black/10 ">
                                             {post.category || "N/A"}
                                         </span>
                                     </td>
                                     <td className="p-4 text-center">{new Date(post.timestamp).toLocaleDateString()}</td>
                                     <td className="p-4 text-center">
                                         <span className={`px-3 py-1 font-medium rounded-lg
-                                            ${post.type === 'found' ? 'bg-green-100 text-green-600' : post.type === 'lost' ? 'bg-red-100 text-red-600' : 'bg-blue-100 text-blue-600'}`}>
+                                            ${post.type === 'found' ? 'bg-green-300 text-green-900' : post.type === 'lost' ? 'bg-red-200 text-red-700' : 'bg-blue-100 text-blue-600'}`}>
                                             {post.type}
                                         </span>
                                     </td>

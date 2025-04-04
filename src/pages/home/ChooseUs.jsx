@@ -1,6 +1,7 @@
 import React from "react";
 import { FaShieldAlt, FaStar, FaUsers } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ChooseUs = () => {
   return (
@@ -56,7 +57,7 @@ const ChooseUs = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          Report a Lost Item
+          <Link to="/addPost">Report a Lost Item</Link>
         </motion.button>
       </div>
     </div>
