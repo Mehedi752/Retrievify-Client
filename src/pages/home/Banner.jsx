@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import bannerImg from "../../assets/banner.jpg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
@@ -31,10 +32,11 @@ const Banner = () => {
                         className="mt-6 flex gap-4 justify-center md:justify-start"
                     >
                         <button className="bg-[#1a237e] hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 transform hover:scale-105">
-                            🔍 View All Items
+                            
+                            <Link to="/posts">🔍 View All Items</Link>
                         </button>
                         <button className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105">
-                            ➕ Add Item
+                            <Link to="/addPost">➕ Add Item</Link>
                         </button>
                     </motion.div>
                 </motion.div>

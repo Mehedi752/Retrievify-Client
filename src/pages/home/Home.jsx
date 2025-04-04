@@ -1,10 +1,11 @@
 import React from "react";
-import Banner from "./banner";
+import Banner from "./Banner";
 import FAQSection from "./FAQSection";
 import ChooseUs from "./ChooseUs";
 import LatestPosts from "./LatestPosts";
 import BannerSlider from "./Slider";
 import Marque from "./Marque";
+import FeaturedFeedback from "./FeaturedFeedback";
 
 const Home = () => {
   return (
@@ -14,7 +15,9 @@ const Home = () => {
       <LatestPosts></LatestPosts>
       <Marque></Marque>
       <FAQSection />
+      <FeaturedFeedback></FeaturedFeedback>
       <ChooseUs />
+      <FAQSection />
     </div>
   );
 };

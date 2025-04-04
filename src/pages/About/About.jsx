@@ -3,6 +3,7 @@ import { FaSearch, FaHandshake, FaCheckCircle, FaDonate, FaHeart } from 'react-i
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const About = () => {
   const { user } = useAuth();

@@ -13,9 +13,9 @@ const Feedbacks = () => {
         },
     });
     return (
-        <div className="max-w-2xl mx-auto p-6">
-            <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">User Feedbacks</h2>
-            <div className="space-y-6">
+        <div className="md:w-11/12 mx-auto lg:min-h-[350px] my-10">
+            <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">User Feedbacks</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 mx-5 md:mx-0 lg:grid-cols-3 gap-6">
                 {feedbacks.map((item, index) => (
                     <FeedbackCard key={index} {...item} />
                 ))}

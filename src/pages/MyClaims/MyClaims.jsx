@@ -77,9 +77,9 @@ const MyClaims = () => {
             <h1 className="text-3xl font-bold mb-8 text-center">My Claims</h1>
 
             {claims.length === 0 ? (
-                <div className="text-center py-12">
+                <div className="text-center lg:min-h-[350px]">
                     <h2 className="text-xl font-medium mb-4">You haven't made any claims yet</h2>
-                    <Link to="/lost-found" className="btn btn-primary">
+                    <Link to="/posts" className="btn btn-primary">
                         Browse Lost & Found Items
                     </Link>
                 </div>
