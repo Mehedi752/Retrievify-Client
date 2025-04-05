@@ -8,6 +8,7 @@ import { MdCall, MdOutlineAttachFile, MdOutlineEmojiEmotions } from "react-icons
 import { format } from "date-fns";
 import Dropdown from "./Dropdown";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
@@ -37,7 +38,7 @@ const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
     useEffect(() => {
         if (!socket) return;
         const handleReceiveMessage = (message) => {
-            if(receiver?._id === message.sender){
+            if (receiver?._id === message.sender) {
                 socket.emit('messageRead', message._id);
                 setMessages((prev) => [...prev, message]);
             }
@@ -147,11 +148,13 @@ const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
                                     >
                                         Delete Chat
                                     </li>
-                                    <li
-                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                    >
-                                        View Profile
-                                    </li>
+                                    <Link to={"/my-profile"}>
+                                        <li
+                                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                                        >
+                                            View Profile
+                                        </li>
+                                    </Link>
                                 </ul>
                             </div>
                         )}

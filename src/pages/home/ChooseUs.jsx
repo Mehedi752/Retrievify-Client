@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ChooseUs = () => {
   return (
-    <div className="bg-gray-100 py-12 text-center">
+    <div className="bg-gradient-to-r from-blue-50 via-white to-blue-50 py-12 text-center">
     <div className="container mx-auto">
     <h2 className="text-4xl font-bold text-gray-900">Why Choose Us?</h2>
       <p className="mt-3 text-gray-600 text-lg max-w-lg mx-auto">

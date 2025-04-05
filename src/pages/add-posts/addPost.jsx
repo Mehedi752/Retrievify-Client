@@ -29,14 +29,14 @@ const AddPost = () => {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            
+
             if (!file.type.match('image.*')) {
                 setImageError('Please select an image file (JPEG, PNG, etc.)');
                 setImagePreview(null);
                 return;
             }
-            
-            
+
+
             if (file.size > 5 * 1024 * 1024) {
                 setImageError('Image size must be less than 5MB');
                 setImagePreview(null);
@@ -72,11 +72,12 @@ const AddPost = () => {
         }
     };
 
+
     const onSubmit = async (data) => {
         try {
-            
+
             const file = fileInputRef.current?.files?.[0];
-            
+
             if (!file) {
                 setImageError('Please upload an image of the item');
                 return;
@@ -86,15 +87,15 @@ const AddPost = () => {
 
             const postData = {
                 ...data,
-                image: imageUrl, 
+                image: imageUrl,
                 ownerName: user?.displayName || 'Anonymous',
                 ownerImage: user?.photoURL || '/default-avatar.png',
                 ownerEmail: user?.email,
-                timestamp: new Date(),
+                // timestamp: new Date(),
             };
 
             const res = await axiosPublic.post('/posts', postData);
-            
+
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
@@ -102,7 +103,7 @@ const AddPost = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            
+
             navigate('/');
         } catch (error) {
             console.error(error);
@@ -128,7 +129,7 @@ const AddPost = () => {
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label className="flex items-center text-gray-700 font-medium">
@@ -161,7 +162,7 @@ const AddPost = () => {
                             </div>
                         </div>
 
-                        
+
                         <div className="space-y-2">
                             <label className="flex items-center text-gray-700 font-medium">
                                 <FaImage className="mr-2" />
@@ -207,7 +208,7 @@ const AddPost = () => {
                             )}
                         </div>
 
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label className="flex items-center text-gray-700 font-medium">
@@ -244,7 +245,7 @@ const AddPost = () => {
                             </div>
                         </div>
 
-                        
+
                         <div className="space-y-2">
                             <label className="flex items-center text-gray-700 font-medium">
                                 <FaPhone className="mr-2" />
@@ -253,15 +254,15 @@ const AddPost = () => {
                             <input
                                 type="tel"
                                 placeholder="Your phone number for contact"
-                                {...register('phone', { 
-                                    required: 'Phone number is required', 
+                                {...register('phone', {
+                                    required: 'Phone number is required',
                                 })}
                                 className={`input input-bordered w-full ${errors.phone ? 'border-red-500' : ''}`}
                             />
                             {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
                         </div>
 
-                        
+
                         <div className="space-y-2">
                             <label className="flex items-center text-gray-700 font-medium">
                                 <MdDescription className="mr-2" />
@@ -270,7 +271,7 @@ const AddPost = () => {
                             <textarea
                                 rows="4"
                                 placeholder="Provide detailed description of the item (color, brand, distinguishing features, etc.)"
-                                {...register('description', { 
+                                {...register('description', {
                                     required: 'Description is required',
                                     minLength: {
                                         value: 20,
@@ -282,7 +283,7 @@ const AddPost = () => {
                             {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
                         </div>
 
-                        
+
                         <div className="bg-gray-50 p-4 rounded-lg">
                             <h3 className="font-medium text-gray-700 mb-3 flex items-center">
                                 <FaInfoCircle className="mr-2 text-indigo-600" />
@@ -313,10 +314,10 @@ const AddPost = () => {
                             </p>
                         </div>
 
-                        
+
                         <div className="pt-4">
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 className={`btn btn-primary w-full  `}
                                 disabled={isUploading}
                             >

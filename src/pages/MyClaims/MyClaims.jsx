@@ -43,11 +43,11 @@ const MyClaims = () => {
     const getStatusBadge = (status) => {
         switch (status) {
             case 'pending':
-                return <span className="badge badge-warning gap-1"><FaClock /> Pending</span>;
+                return <span className="badge badge-warning bg-yellow-400 gap-1 rounded-xl"><FaClock /> Pending</span>;
             case 'verified':
-                return <span className="badge badge-success gap-1"><FaCheckCircle /> Verified</span>;
+                return <span className="badge badge-success bg-green-600 gap-1 rounded-xl text-white"><FaCheckCircle /> Verified</span>;
             case 'rejected':
-                return <span className="badge badge-error gap-1"><FaTimesCircle /> Rejected</span>;
+                return <span className="badge badge-error gap-1 rounded-xl bg-red-600 text-white"><FaTimesCircle /> Rejected</span>;
             default:
                 return <span className="badge badge-info gap-1">Unknown</span>;
         }
@@ -73,132 +73,146 @@ const MyClaims = () => {
     if (isLoading) return <LoadingSpinner />;
 
     return (
-        <div className="container mx-auto px-4 py-8 max-w-6xl">
-            <h1 className="text-3xl font-bold mb-8 text-center">My Claims</h1>
-
-            {claims.length === 0 ? (
-                <div className="text-center lg:min-h-[350px]">
-                    <h2 className="text-xl font-medium mb-4">You haven't made any claims yet</h2>
-                    <Link to="/posts" className="btn btn-primary">
-                        Browse Lost & Found Items
-                    </Link>
+        <div className="bg-gray-100 py-12">
+            <div className="container mx-auto p-6 bg-white rounded-xl max-w-6xl">
+                <div className="bg-indigo-900 py-4 px-6 rounded-t-xl">
+                    <h1 className="text-2xl md:text-3xl font-bold text-white text-center">
+                        Your Claims
+                    </h1>
+                    <p className="text-indigo-200 text-center mt-1">
+                        Here you can manage your claims. You can view, delete your claims and chat with them.
+                    </p>
                 </div>
-            ) : (
-                <div className="overflow-x-auto">
-                    <table className="table w-full">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Claim Details</th>
-                                <th>Status</th>
-                                <th>Chat(Admin)</th>
-                                <th>Chat(Who Got)</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {claims.map((claim) => (
-                                <tr key={claim._id}>
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            {claim.imageUrl ? (
-                                                <div className="avatar">
-                                                    <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={claim.imageUrl} alt="Claimed item" />
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                <div className="avatar placeholder">
-                                                    <div className="bg-neutral text-neutral-content mask mask-squircle w-12 h-12">
-                                                        <span className="text-xl">?</span>
-                                                    </div>
-                                                </div>
-                                            )}
-                                            <div>
-                                                <div className="font-bold">Claim #{claim._id.slice(-6)}</div>
-                                                <div className="text-sm opacity-50">{new Date(claim.createdAt).toLocaleDateString()}</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="flex flex-col gap-1">
-                                            <div className="flex items-center gap-1">
-                                                <FaReceipt className="text-blue-500" />
-                                                <span className="text-sm">{claim.receiptUrl ? 'Receipt provided' : 'No receipt'}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <FaImage className="text-green-500" />
-                                                <span className="text-sm">{claim.imageUrl ? 'Images provided' : 'No images'}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <FaInfoCircle className="text-purple-500" />
-                                                <span className="text-sm">{claim.details.substring(0, 30)}...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{getStatusBadge(claim.status)}</td>
 
-                                    {/* Chat Column */}
-                                    <td>
-                                        {claim.status === 'verified' ? (
-                                           <Link
-                                           to={`/chats/mehedi@gmail.com`}
-                                           className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
-                                       >
-                                           <FaComments className="text-blue-500" /> Chat
-                                       </Link>
-                                        ) : (
-                                            <button
-                                            className="btn btn-disabled w-32 btn-sm flex items-center gap-1 cursor-not-allowed"
-                                            title="Chat unavailable until verified"
-                                        >
-                                            <FaTimesCircle className="text-red-500" /> Cannot Chat
-                                        </button>
-                                        )}
-                                    </td>
-
-                                    <td>
-                                        {claim.status === 'verified' ? (
-                                            <Link
-                                                to={`/chats/${claim?.postAuthor}`}
-                                                className="btn btn-outline  w-32 btn-sm flex items-center gap-1"
-                                            >
-                                                <FaComments className="text-blue-500" /> Chat
-                                            </Link>
-                                        ) : (
-                                            <button
-                                            className="btn btn-disabled w-32 btn-sm flex items-center gap-1 cursor-not-allowed"
-                                            title="Chat unavailable until verified"
-                                        >
-                                            <FaTimesCircle className="text-red-500" /> Cannot Chat
-                                        </button>
-                                        )}
-                                    </td>
-
-                                    <td>
-                                        <div className="flex gap-2">
-                                            <Link
-                                                to={`/claim-details/${claim._id}`}
-                                                className="btn btn-ghost btn-sm outline"
-                                            >
-                                                Details
-                                            </Link>
-                                            <button
-                                                onClick={() => handleDelete(claim._id)}
-                                                className="btn btn-ghost btn-sm text-red-500 cursor-pointer"
-                                                disabled={claim.status === 'verified'}
-                                                title={claim.status === 'verified' ? "Verified claims cannot be deleted" : "Delete claim"}
-                                            >
-                                                <FaTrash />
-                                            </button>
-                                        </div>
-                                    </td>
+                {claims.length === 0 ? (
+                    <div className="text-center lg:min-h-[350px]">
+                        <h2 className="text-xl font-medium my-4">You haven't made any claims yet</h2>
+                        <Link to="/posts" className="btn btn-primary">
+                            Browse Lost & Found Items
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="overflow-x-auto bg-white rounded-b-xl shadow-md">
+                        <table className="table table-zebra w-full">
+                            <thead className="bg-indigo-600 text-white text-sm">
+                                <tr>
+                                    <th className="p-4">Item</th>
+                                    <th className="p-4">Claim Details</th>
+                                    <th className="p-4">Status</th>
+                                    <th className="p-4">Chat (Admin)</th>
+                                    <th className="p-4">Chat (Who Got)</th>
+                                    <th className="p-4">Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}
+                            </thead>
+                            <tbody>
+                                {claims.map((claim) => (
+                                    <tr key={claim._id} className="hover:bg-gray-50 transition duration-150 ease-in-out">
+                                        <td className="p-4">
+                                            <div className="flex items-center gap-3">
+                                                {claim.imageUrl ? (
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle w-12 h-12">
+                                                            <img src={claim.imageUrl} alt="Claimed item" />
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <div className="avatar placeholder">
+                                                        <div className="bg-neutral text-neutral-content mask mask-squircle w-12 h-12">
+                                                            <span className="text-xl">?</span>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                                <div>
+                                                    <div className="font-semibold">Claim #{claim._id.slice(-6)}</div>
+                                                    <div className="text-xs text-gray-500">{new Date(claim.createdAt).toLocaleDateString()}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="p-4">
+                                            <div className="flex flex-col gap-2 text-sm text-gray-700">
+                                                <div className="flex items-center gap-2">
+                                                    <FaReceipt className="text-blue-600" />
+                                                    {claim.receiptUrl ? 'Receipt provided' : 'No receipt'}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <FaImage className="text-green-600" />
+                                                    {claim.imageUrl ? 'Image attached' : 'No image'}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <FaInfoCircle className="text-purple-600" />
+                                                    {claim.details.substring(0, 30)}...
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="p-4">
+                                            {getStatusBadge(claim.status)}
+                                        </td>
+
+                                        {/* Chat with Admin */}
+                                        <td className="p-4">
+                                            {claim.status === 'verified' ? (
+                                                <Link
+                                                    to={`/chats/mehedi@gmail.com`}
+                                                    className="btn btn-outline btn-sm gap-2"
+                                                >
+                                                    <FaComments /> Chat
+                                                </Link>
+                                            ) : (
+                                                <button
+                                                    className="btn btn-disabled btn-sm gap-2"
+                                                    title="Chat unavailable until verified"
+                                                >
+                                                    <FaTimesCircle className="text-red-500" /> Not Available
+                                                </button>
+                                            )}
+                                        </td>
+
+                                        {/* Chat with Post Author */}
+                                        <td className="p-4">
+                                            {claim.status === 'verified' ? (
+                                                <Link
+                                                    to={`/chats/${claim.postAuthor}`}
+                                                    className="btn btn-outline btn-sm gap-2"
+                                                >
+                                                    <FaComments /> Chat
+                                                </Link>
+                                            ) : (
+                                                <button
+                                                    className="btn btn-disabled btn-sm gap-2"
+                                                    title="Chat unavailable until verified"
+                                                >
+                                                    <FaTimesCircle className="text-red-500" /> Not Available
+                                                </button>
+                                            )}
+                                        </td>
+
+                                        {/* Actions */}
+                                        <td className="p-4">
+                                            <div className="flex flex-col gap-2 md:flex-row">
+                                                <Link
+                                                    to={`/claim-details/${claim._id}`}
+                                                    className="btn btn-sm btn-outline"
+                                                >
+                                                    Details
+                                                </Link>
+                                                <button
+                                                    onClick={() => handleDelete(claim._id)}
+                                                    className="btn btn-sm btn-outline text-red-600 border-red-300 bg-white"
+                                                    disabled={claim.status === 'verified'}
+                                                    title={claim.status === 'verified' ? "Verified claims cannot be deleted" : "Delete claim"}
+                                                >
+                                                    <FaTrash />
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                )}
+            </div>
         </div>
     );
 };

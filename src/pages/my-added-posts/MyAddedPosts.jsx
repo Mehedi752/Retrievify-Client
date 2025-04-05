@@ -44,11 +44,18 @@ const MyAddedPosts = () => {
     return (
         <div className="bg-gray-100 min-h-screen py-12">
             <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg">
-                <h1 className="text-4xl font-bold text-center text-gray-900 mb-6">My Added Posts</h1>
+                <div className="bg-indigo-900 py-4 px-6 rounded-t-xl">
+                    <h1 className="text-2xl md:text-3xl font-bold text-white text-center">
+                        Your Added Posts
+                    </h1>
+                    <p className="text-indigo-200 text-center mt-1">
+                        Here you can manage your added posts. You can update or delete them as needed.
+                    </p>
+                </div>
 
                 <div className="overflow-x-auto">
-                    <table className="w-full border-collapse rounded-lg shadow-md">
-                        <thead className="bg-blue-600 text-white text-lg">
+                    <table className="w-full border-collapse rounded-lg shadow-lg">
+                        <thead className="bg-indigo-600 text-white text-lg">
                             <tr>
                                 <th className="p-4">#</th>
                                 <th className="p-4 text-left">Title</th>
@@ -59,40 +66,48 @@ const MyAddedPosts = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {myAddedPosts.map((post, index) => (
-                                <tr key={post._id} className="border-b border-gray-200 hover:bg-gray-100 transition-all">
-                                    <td className="p-4 text-center">{index + 1}</td>
-                                    <td className="p-4 text-left font-semibold">{post.name}</td>
-                                    <td className="p-4 text-center">
-                                        <span className="relative inline-block px-3 py-2 text-sm text-black rounded-lg bg-black/10 backdrop-blur-2xl border border-black/10 ">
-                                            {post.category || "N/A"}
-                                        </span>
-                                    </td>
-                                    <td className="p-4 text-center">{new Date(post.timestamp).toLocaleDateString()}</td>
-                                    <td className="p-4 text-center">
-                                        <span className={`px-3 py-1 font-medium rounded-lg
-                                            ${post.type === 'found' ? 'bg-green-300 text-green-900' : post.type === 'lost' ? 'bg-red-200 text-red-700' : 'bg-blue-100 text-blue-600'}`}>
-                                            {post.type}
-                                        </span>
-                                    </td>
-                                    <td className="p-4 flex justify-center gap-3">
-                                        <Link to={`/posts/update/${post._id}`}>
+                            {myAddedPosts.length > 0 ? (
+                                myAddedPosts.map((post, index) => (
+                                    <tr key={post._id} className="border-b border-gray-200 hover:bg-gray-100 transition-all">
+                                        <td className="p-4 text-center">{index + 1}</td>
+                                        <td className="p-4 text-left font-semibold">{post.name}</td>
+                                        <td className="p-4 text-center">
+                                            <span className="relative inline-block px-3 py-2 text-sm text-black rounded-lg bg-black/10 backdrop-blur-2xl border border-black/10 ">
+                                                {post.category || "N/A"}
+                                            </span>
+                                        </td>
+                                        <td className="p-4 text-center">{new Date(post.timestamp).toLocaleDateString()}</td>
+                                        <td className="p-4 text-center">
+                                            <span className={`px-3 py-2 font-medium rounded-lg
+                                                ${post.type === 'found' ? 'bg-green-100 text-green-800 border border-green-300' : post.type === 'lost' ? 'bg-red-100 text-red-700 border border-red-300' : 'bg-blue-100 text-blue-600 border border-blue-300'}`}>
+                                                {post.type}
+                                            </span>
+                                        </td>
+                                        <td className="p-4 flex justify-center gap-3">
+                                            <Link to={`/posts/update/${post._id}`}>
+                                                <button
+                                                    className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg shadow-md transition"
+                                                    onClick={() => console.log("Update Post:", post._id)}
+                                                >
+                                                    <FaEdit />
+                                                </button>
+                                            </Link>
                                             <button
-                                                className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg shadow-md transition"
-                                                onClick={() => console.log("Update Post:", post._id)}
+                                                className="bg-red-500 hover:bg-red-700 text-white p-2 rounded-lg shadow-md transition"
+                                                onClick={() => handleDelete(post._id)}
                                             >
-                                                <FaEdit />
+                                                <FaTrash />
                                             </button>
-                                        </Link>
-                                        <button
-                                            className="bg-red-500 hover:bg-red-700 text-white p-2 rounded-lg shadow-md transition"
-                                            onClick={() => handleDelete(post._id)}
-                                        >
-                                            <FaTrash />
-                                        </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="6" className="p-4 text-center text-gray-500">
+                                        No posts added yet.
                                     </td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
                 </div>

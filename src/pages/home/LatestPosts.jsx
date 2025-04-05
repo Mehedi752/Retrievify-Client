@@ -15,7 +15,7 @@ const LatestPosts = () => {
     // console.log(latestPosts);
 
     return (
-        <div className="py-12">
+        <div className="py-12 bg-gradient-to-r from-blue-50 via-white to-blue-50 my-12">
             <div className="container mx-auto">
                 <h1 className="text-3xl lg:text-5xl font-bold text-center text-gray-900 mb-8">Latest Posts</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

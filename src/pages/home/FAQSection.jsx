@@ -33,7 +33,8 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto my-12 p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
+    <div className="bg-gradient-to-r from-blue-50 via-white to-blue-50 my-12 py-8">
+       <div className="max-w-3xl mx-auto my-12 p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
       <h2 className="text-4xl font-bold text-center mb-5 text-gray-900">
         Frequently Asked Questions
       </h2>
@@ -74,6 +75,7 @@ const FAQSection = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

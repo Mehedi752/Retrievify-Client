@@ -22,23 +22,23 @@ const Reviews = () => {
   });
 
   return (
-    <div className="w-full max-w-4xl mx-auto py-12 flex flex-col justify-center items-center">
-      <h2 className="text-2xl md:text-4xl mb-6 font-semibold text-center">
-        User Feedbacks
+    <div className="w-full max-w-6xl mx-auto py-12 my-12 px-4 bg-gradient-to-r from-blue-50 to-white rounded-xl shadow-xl">
+      <h2 className="text-3xl md:text-5xl font-bold text-center text-[#19277b] mb-10">
+        💬 What Our Users Are Saying
       </h2>
 
       <Swiper
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={1} // Default to 1 slide on small screens
+        slidesPerView={1}
         breakpoints={{
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }}
         coverflowEffect={{
-          rotate: 50,
+          rotate: 30,
           stretch: 0,
           depth: 100,
           modifier: 1,
@@ -46,20 +46,20 @@ const Reviews = () => {
         }}
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination]}
-        className="w-full text-[##19277b] "
+        className="w-full"
       >
         {featuredFeedbacks.map((feedback) => (
           <SwiperSlide
             key={feedback._id}
-            className="bg-[#e6e6e6] p-6 rounded-lg border w-full max-w-md mx-auto"
+            className="bg-white p-6 rounded-2xl border border-blue-100 shadow-md hover:shadow-2xl transition-all duration-300 max-w-md"
           >
-            <div className="flex flex-col items-center h-80 justify-between">
+            <div className="flex flex-col items-center h-80 justify-between text-center">
               <img
                 src={feedback.photo}
                 alt={feedback.name}
-                className="w-16 h-16 border border-gray-400 shadow-2xl rounded-full"
+                className="w-16 h-16 rounded-full border-2 border-blue-400 shadow-lg mb-2"
               />
-              <div className="flex">
+              <div className="flex justify-center">
                 {[...Array(5)].map((_, index) =>
                   index < feedback.rating ? (
                     <FaStar key={index} className="text-yellow-500 mr-1" />
@@ -68,18 +68,26 @@ const Reviews = () => {
                   )
                 )}
               </div>
-              <p className="text-center text-gray-700  italic">"{feedback.feedback}"</p>
-              <div className="w-full">
-                <p className="text-right text-[#19277b] font-semibold">- {feedback.name}</p>
-                <p className="text-right text-sm text-gray-500">{feedback.date}</p>
+              <p className="text-gray-700 italic mt-2 px-2">
+                “{feedback.feedback}”
+              </p>
+              <div className="mt-4 w-full">
+                <p className="text-[#19277b] font-semibold">{feedback.name}</p>
+                <p className="text-sm text-gray-500">{feedback.date}</p>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className="btn bg-[#19277b] rounded-lg text-white mt-5">
-      <Link to="/feedbacks" className="text-center">View all feedbacks</Link>
-      </button>
+
+      <div className="mt-8 text-center">
+        <Link
+          to="/feedbacks"
+          className="inline-block bg-[#19277b] hover:bg-[#0f1b5f] text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300"
+        >
+          View All Feedbacks
+        </Link>
+      </div>
     </div>
   );
 };
