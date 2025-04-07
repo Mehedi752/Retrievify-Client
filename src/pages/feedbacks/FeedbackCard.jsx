@@ -23,4 +23,4 @@ const FeedbackCard = ({ name, email, rating, feedback, date, photo }) => {
     );
 };
 
-export default FeedbackCard;
+export default FeedbackCard; 
