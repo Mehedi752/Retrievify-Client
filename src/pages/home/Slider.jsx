@@ -29,7 +29,14 @@ const Slider = () => {
       id: 4,
       title: "Lost Treasures",
       description: "A diverse collection of items, waiting to be reunited with their owners.",
-      image: "https://i.ibb.co.com/Y7GxCz5G/5.webp"
+      // image: "https://i.ibb.co.com/Y7GxCz5G/5.webp"     (previous image)
+
+      image: "https://i.ibb.co.com/TDD4rM2Q/personal-belongings.jpg"
+
+      // OPTIONS -
+      // image: "https://i.ibb.co.com/zV8G2pTx/lost-items.jpg"
+      // image: "https://i.ibb.co.com/TBJqX1Zm/items.jpg"
+      // image:"https://i.ibb.co.com/Xf1H9F4G/coppertist-wu-f7vfxc-Cc8-Ao-unsplash.jpg"
     },
 
   ];
@@ -111,7 +118,7 @@ const Slider = () => {
                   className="w-full h-full object-cover"
                 />
                 {/* Text Overlay */}
-                <div className="absolute inset-0  bg-opacity-40 flex flex-col items-center justify-center text-white text-center">
+                <div className="absolute inset-0 hero-overlay bg-opacity-40 flex flex-col items-center justify-center text-white text-center">
                   <h2 className="text-3xl md:text-5xl font-bold mb-6">{slide.title}</h2>
                   <p className="text-lg md:text-2xl">{slide.description}</p>
                 </div>

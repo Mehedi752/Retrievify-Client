@@ -209,9 +209,10 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <div className="flex items-center gap-1">
+            <Link to="/" className="flex items-center gap-1">
               <img src={logoImg} alt="" className="w-10 h-10 mt-2" />
               <h3 className="text-2xl">Ferot</h3>
+            </Link>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">
