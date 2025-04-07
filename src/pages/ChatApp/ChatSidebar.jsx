@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { FaPlus } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom";
 import { formatDistanceToNowStrict } from 'date-fns';
@@ -20,15 +20,15 @@ const ChatSidebar = ({ users, count }) => {
             .replace('month', 'mo')
             .replace('years', 'y')
             .replace('year', 'y');
-     
+
         const formattedAgoTime = agoTime.replace(/(\d+) (\w+)/, "$1$2");
-    
+
         return formattedAgoTime.includes('seconds') ? 'Just Now' : formattedAgoTime;
     };
-    
+
 
     const { receieverEmail } = useParams()
-     
+
     return (
         <div className="w-1/3  bg-white shadow-lg p-4 flex flex-col border-r border-r-gray-200">
             <div className="flex justify-between items-center mb-4">
@@ -50,15 +50,20 @@ const ChatSidebar = ({ users, count }) => {
                             <Link to={`/chats/${user.email}`} className={`${receieverEmail === user.email ? "bg-cyan-200" : "bg-gray-200"} flex items-center gap-3 cursor-pointer border rounded-lg border-gray-300 p-2 `}>
                                 <img src={user.photoURL} alt="" className="w-12 h-12 rounded-full mr-2" />
                                 <div className="flex flex-col w-full">
-                                    <div className="flex relative justify-between items-center ">
+                                    <div className="flex  justify-between items-center ">
                                         <h3 className="text-lg">{user ? `${user?.userName}` : "Chat"}</h3>
-                                        <p className="">{timeAgo(user.timestamp)}</p>
+                                        {/*  */}
                                         {
-                                            user.isRead && <p className="text-blue-500 absolute right-1 top-10"><FaRegHandPointLeft />
-</p>
+                                            user.isRead ? (
+                                                <span className="text-xs bg-green-600 text-white px-2 py-0.5 rounded-full shadow-xl ">
+                                                    New
+                                                </span>
+                                            ) : (
+                                                <p className="">{timeAgo(user.timestamp)}</p>
+                                            )
                                         }
                                     </div>
-                                    <p className="text-gray-500 text-sm"> {user?.lastMessage}</p>
+                                    <p className="text-gray-600  text-sm"> {user?.lastMessage}</p>
                                 </div>
                             </Link>
                         )

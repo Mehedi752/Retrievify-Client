@@ -209,9 +209,9 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-1">
               <img src={logoImg} alt="" className="w-10 h-10 mt-2" />
-              <h3 className="text-2xl">Retrievify</h3>
+              <h3 className="text-2xl">ReGain</h3>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">

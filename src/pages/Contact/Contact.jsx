@@ -8,26 +8,19 @@ const Contact = () => {
   const position = [23.8223, 90.3654];
 
   return (
-    <div className="flex flex-col shadow-2xs bg-gray-100 text-gray-900 p-12  border border-gray-200">
-      <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col shadow-2xs bg-gray-100 text-gray-900 p-12 lg:px-[150px]  border border-gray-200">
+      <div className="flex flex-col md:flex-row items-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="md:w-1/2 p-6 space-y-6"
+          className="md:w-1/2 p-6 space-y-2"
         >
-          <motion.h1
-            animate={{ x: 50, color: ["#1e3a8a", "#dc2626"] }}
-            transition={{
-              duration: 2,
-              delay: 1,
-              ease: "easeInOut",
-              repeat: Infinity,
-            }}
-            className="text-3xl md:text-5xl font-bold text-gray-800"
+          <h1
+            className="text-3xl md:text-5xl font-bold text-red-600"
           >
             Contact Us
-          </motion.h1>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -38,44 +31,44 @@ const Contact = () => {
             Have inquiries or collaboration ideas? Get in touch with us!
           </motion.p>
 
-          <div className="mt-4 space-y-5">
+          <div className="mt-4 space-y-2">
             <motion.div
-              className="flex items-center space-x-4"
+              className="flex items-center space-x-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <FaEnvelope className="text-cyan-600 text-xl bg-cyan-200 btn rounded-full w-14 h-14" />
-              <span className="text-lg text-gray-800">
+              <FaEnvelope className="text-cyan-400 text-xl bg-cyan-800 btn rounded-full w-14 h-14" />
+              <span className="text-xl text-gray-800">
                 retrievify@gmail.com
               </span>
             </motion.div>
 
             <motion.div
-              className="flex items-center space-x-4"
+              className="flex items-center space-x-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <FaWhatsapp className="text-green-500 text-xl bg-cyan-200 btn rounded-full w-14 h-14" />
-              <span className="text-lg text-gray-800">+880 160 953 1117</span>
+              <FaWhatsapp className="text-green-400 text-xl bg-green-800 btn rounded-full w-14 h-14" />
+              <span className="text-xl text-gray-800">+880 160 953 1117</span>
             </motion.div>
 
             <motion.div
-              className="flex items-center space-x-4"
+              className="flex items-center space-x-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <FaMapMarkerAlt className="text-red-500 text-xl bg-cyan-200 btn rounded-full w-14 h-14" />
-              <span className="text-lg text-gray-800">
+              <FaMapMarkerAlt className="text-red-400 text-xl bg-red-800 btn rounded-full w-14 h-14" />
+              <span className="text-xl text-gray-800">
                 Mirpur, Dhaka, Bangladesh
               </span>
             </motion.div>
           </div>
         </motion.div>
 
-        <div className="md:w-1/2 p-6 bg-gray-50 rounded-xl shadow-inner">
+        <div className="md:w-1/2 p-6 bg-white rounded-xl shadow-lg">
           <motion.form
             className="space-y-4"
             initial={{ opacity: 0 }}
@@ -140,7 +133,7 @@ const Contact = () => {
         <MapContainer center={position} zoom={13} className="h-full w-full">
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <Marker position={position}>
-            <Popup>Our Location: Mymensingh, Bangladesh</Popup>
+            <Popup>Our Office : Mirpur, Bangladesh</Popup>
           </Marker>
         </MapContainer>
       </div>

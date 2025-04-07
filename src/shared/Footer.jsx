@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="lg:w-1/3">
             <div className="flex items-center space-x-2 mb-4">
               <img src={logoImg} alt="Logo" className="w-10 h-10 mt-2" />
-              <h2 className="text-2xl font-semibold">Retrievify</h2>
+              <h2 className="text-2xl font-semibold">ReGain</h2>
             </div>
             <p className="">
               Product Hunt is a hub for all the latest products and trends. We

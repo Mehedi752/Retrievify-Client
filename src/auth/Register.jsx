@@ -39,15 +39,14 @@ const Register = () => {
                         axiosPublic.post('/users', user)
                             .then(res => {
                                 //console.log('User added to database : ', res.data);
-                                if (res.data.insertedId) {
-                                    toast.success(`Welcome ${currentUser.displayName} to our website`);
-                                }
+                                toast.success(`Welcome ${currentUser.displayName} to our website`);
+                                navigate(location.state ? location.state : '/');
+
                             })
                             .catch(err => {
                                 //console.log('Error adding user to database : ', err);
                             })
 
-                        navigate(location.state ? location.state : '/');
                     })
                     .catch((error) => {
                         setErrorMessage(error);

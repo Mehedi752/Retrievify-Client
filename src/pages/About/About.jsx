@@ -81,37 +81,42 @@ const About = () => {
           </Link>
         </div> */}
 
-
         <div className="mt-16 px-6 lg:px-[375px]">
-          <div className="p-6 bg-white shadow-lg rounded-xl mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-3 text-center">Make a Donation</h2>
-            <p className="text-gray-600 mb-4 text-center">
-              Your donation helps us reward those who return lost items. Every contribution counts! ❤️
+          <div className="p-8 bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-2xl rounded-2xl mb-8 border border-gray-200">
+            <h2 className="text-3xl font-bold text-gray-800 text-center mb-2">Support Our Cause</h2>
+            <p className="text-gray-600 text-center text-lg mb-6">
+              Help us reward the heroes who return lost items. Every contribution matters ❤️
             </p>
 
-            <input
-              type="number"
-              className="input input-bordered w-full text-lg p-3 rounded-lg focus:ring-2 focus:ring-green-500"
-              placeholder="Enter donation amount (BDT)"
-              value={donation}
-              onChange={(e) => setDonation(e.target.value)}
-            />
+            <div className="flex flex-col gap-4">
+              <input
+                type="number"
+                className="input input-bordered w-full text-lg px-4 py-3 rounded-lg focus:ring-2 focus:ring-green-500 shadow-sm"
+                placeholder="Enter donation amount (BDT)"
+                value={donation}
+                onChange={(e) => setDonation(e.target.value)}
+              />
 
-            <button
-              className="btn bg-green-600 hover:bg-green-700 text-white w-full mt-4 flex items-center justify-center gap-2 py-3 rounded-lg transition duration-300"
-              onClick={handleDonate}
-            >
-              <FaDonate /> Donate Now
-            </button>
+              <button
+                onClick={handleDonate}
+                className="w-full bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-3 rounded-lg shadow-lg flex items-center justify-center gap-3 transition duration-300"
+              >
+                <FaDonate className="text-xl" />
+                Donate Now
+              </button>
+            </div>
           </div>
 
-          {/* Appreciation Quote */}
-          <div className="p-6 bg-white rounded-lg text-lg font-medium italic text-center shadow-md">
-            <FaHeart className="text-red-500 text-4xl mx-auto mb-3 animate-pulse" />
-            "The real gift of kindness is that it makes both the giver and the receiver feel richer.
-            Thank you for making the world a better place🙏✨"
+          <div className="p-6 bg-white rounded-2xl text-lg font-medium italic text-center shadow-xl border border-gray-200">
+            <FaHeart className="text-red-500 text-4xl mx-auto mb-4 animate-bounce" />
+            <p className="text-gray-700 leading-relaxed">
+              “The real gift of kindness is that it makes both the giver and the receiver feel richer.”<br />
+              <span className="font-semibold text-green-600">Thank you for making the world a better place 🙏✨</span>
+            </p>
           </div>
         </div>
+
+
       </div>
     </div>
   );

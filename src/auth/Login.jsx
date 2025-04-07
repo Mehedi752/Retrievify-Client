@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import authImg from '../assets/auth.jpg';
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = async (data) => {
         const { email, password } = data;
@@ -49,9 +51,8 @@ const Login = () => {
                 axiosPublic.post('/users', user)
                     .then(res => {
                         //console.log('User added to database : ', res.data);
-                        if (res.data.insertedId) {
-                            toast.success(`Welcome ${currentUser.displayName} to our website`);
-                        }
+                        toast.success(`Welcome ${user.name} to our website`);
+
                     })
                     .catch(err => {
                         //console.log('Error adding user to database : ', err);
