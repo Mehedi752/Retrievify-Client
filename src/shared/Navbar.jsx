@@ -33,8 +33,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+              ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+              : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/"}
         >
@@ -47,8 +47,8 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+                  ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+                  : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/posts"}
             >
@@ -59,8 +59,8 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+                  ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+                  : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/addPost"}
             >
@@ -71,8 +71,8 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+                  ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+                  : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/myAddedPosts"}
             >
@@ -85,8 +85,8 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-                    : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+                    ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+                    : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
                 }
                 to={"/all-claims"}
               >
@@ -99,8 +99,8 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-                  : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+                  ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+                  : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
               }
               to={"/my-claims"}
             >
@@ -113,8 +113,8 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-                    : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+                    ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+                    : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
                 }
                 to={"/my-profile"}
               >
@@ -129,8 +129,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+              ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+              : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/contact"}
         >
@@ -141,8 +141,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+              ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+              : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/about"}
         >
@@ -153,8 +153,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-[#19277b] font-bold border-b-4 border-[#19277b] focus:outline-none"
-              : "text-gray-600 font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
+              ? "text-[#3B82F6] font-bold border-b-4 border-[#3B82F6] focus:outline-none"
+              : "text-white font-medium px-2 py-2 rounded-md hover:text-blue-500 focus:outline-none"
           }
           to={"/feedbacks"}
         >
@@ -176,7 +176,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" bg-cyan-100 py-5">
+    <div className=" bg-[#1E1E2E] text-white py-5">
       <div className="md:w-11/12 mx-auto">
         <div className="navbar flex items-center">
           <div className="navbar-start">
@@ -213,6 +213,7 @@ const Navbar = () => {
               <img src={logoImg} alt="" className="w-10 h-10 mt-2" />
               <h3 className="text-2xl">Ferot</h3>
             </Link>
+            </div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{links}</ul>

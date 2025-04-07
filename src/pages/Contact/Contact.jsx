@@ -8,7 +8,7 @@ const Contact = () => {
   const position = [23.8223, 90.3654];
 
   return (
-    <div className="flex flex-col shadow-2xs bg-gray-100 text-gray-900 p-12 lg:px-[150px]  border border-gray-200">
+    <div className="flex flex-col shadow-2xs bg-gray-100 text-gray-900 p-12 lg:px-[120px]  border border-gray-200">
       <div className="flex flex-col md:flex-row items-center">
         <motion.div
           initial={{ opacity: 0 }}
