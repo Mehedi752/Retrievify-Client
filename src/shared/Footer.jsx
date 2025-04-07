@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <div className="bg-[#1e1e2d]">
       <footer className=" text-white py-12 lg:w-11/12 lg:mx-auto">
-        <div className="md:w-11/12 mx-auto px-6 lg:px-0 flex flex-col lg:flex-row gap-6 lg:justify-between">
+        <div className="md:w-11/12 mx-auto px-6 lg:px-0 flex flex-col lg:flex-row gap-6 lg:justify-between ">
           {/* Logo and Description */}
           <div className="lg:w-1/3">
             <div className="flex items-center space-x-2 mb-4">
@@ -21,16 +21,16 @@ const Footer = () => {
               <h2 className="text-2xl font-semibold">Ferot</h2>
             </div>
             <p className="">
-              Product Hunt is a hub for all the latest products and trends. We
-              are dedicated to providing quality service and the best user
-              experience.
+              Ferot - The Lost & Found System is a web-based platform that enables 
+              users to report lost items, find returned belongings, verify ownership
+              and connect with others to reclaim their items.
             </p>
           </div>
 
           {/* Contact Information */}
           <div className="lg:w-1/3">
             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               <li className="flex items-center space-x-2">
                 <IoLocationOutline className="text-xl" />
                 <span>Mirpur, Dhaka, Bangladesh</span>
@@ -43,6 +43,7 @@ const Footer = () => {
                 <HiOutlineMail className="text-xl" />
                 <span>ferot@gmail.com</span>
               </li>
+
             </ul>
           </div>
 

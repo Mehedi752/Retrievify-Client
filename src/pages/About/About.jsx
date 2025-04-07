@@ -40,7 +40,11 @@ const About = () => {
             Helping You Find What Matters Most
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Our platform connects people to recover lost items and build a trusted community.
+            Ferot - The Lost & Found System is a web-based platform that enables
+            users to report lost items, find returned belongings, verify ownership
+            and connect with others to reclaim their items. Designed with trust,
+            transparency and user experience in mind, this system also incorporates
+            real-time communication, optional rewards and donation-based support.
           </p>
         </div>
 
