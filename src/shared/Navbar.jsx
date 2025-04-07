@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import logoImg from "../assets/logo.png";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { BsChatLeftDots } from "react-icons/bs"; 
+import { BsChatLeftDots } from "react-icons/bs";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
@@ -15,7 +15,7 @@ const Navbar = () => {
       const res = await axiosPublic.get(`/users/${user?.email}`);
       return res.data;
     },
-  }); 
+  });
   const { data: users = [], } = useQuery({
     queryKey: ['chatUsers', currentUser?.email],
     queryFn: async () => {
@@ -79,7 +79,7 @@ const Navbar = () => {
               My Added Post
             </NavLink>
           </li>
-  
+
           {currentUser?.role === "admin" && (
             <li>
               <NavLink
@@ -94,7 +94,7 @@ const Navbar = () => {
               </NavLink>
             </li>
           )}
-  
+
           <li>
             <NavLink
               className={({ isActive }) =>
@@ -107,7 +107,7 @@ const Navbar = () => {
               My Claims
             </NavLink>
           </li>
-  
+
           {currentUser?.role === "user" && (
             <li>
               <NavLink
@@ -124,7 +124,7 @@ const Navbar = () => {
           )}
         </>
       )}
-  
+
       <li>
         <NavLink
           className={({ isActive }) =>
@@ -163,8 +163,8 @@ const Navbar = () => {
       </li>
     </>
   );
-  
-  
+
+
   const handleLogOut = () => {
     signOutUser()
       .then(() => {
@@ -213,25 +213,25 @@ const Navbar = () => {
               <img src={logoImg} alt="" className="w-10 h-10 mt-2" />
               <h3 className="text-2xl">Ferot</h3>
             </Link>
-            </div>
           </div>
+
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div className="navbar-end gap-5">
             {user?.email ? (
-              
-                <Link 
+
+              <Link
                 to={"/chats"}
                 className="flex items-center relative "
               >
                 <div>
                   <BsChatLeftDots className="w-6 font-extrabold h-6" />
                   <sup className="-top-2 absolute -right-4">{`(${count})`}</sup>
-                  </div>
-                </Link>
+                </div>
+              </Link>
 
-            ): ''}
+            ) : ''}
             {user && user.photoURL ? (
               <div className="relative group">
                 <img
@@ -265,7 +265,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
