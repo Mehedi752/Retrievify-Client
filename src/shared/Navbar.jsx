@@ -177,7 +177,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" fixed top-0 left-0 w-full z-50 bg-[#1E1E2E] text-white py-5">
+    <div className=" sticky top-0 left-0 w-full z-50 bg-[#1E1E2E] text-white py-5">
       <div className="md:w-11/12 mx-auto">
         <div className="navbar flex items-center">
           <div className="navbar-start">
