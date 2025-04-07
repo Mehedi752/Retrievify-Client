@@ -40,7 +40,7 @@ const Contact = () => {
             >
               <FaEnvelope className="text-cyan-400 text-xl bg-cyan-800 btn rounded-full w-14 h-14" />
               <span className="text-xl text-gray-800">
-                retrievify@gmail.com
+                ferot@gmail.com
               </span>
             </motion.div>
 
