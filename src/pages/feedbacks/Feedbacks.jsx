@@ -13,7 +13,7 @@ const Feedbacks = () => {
         },
     });
     return (
-        <div className="container mx-auto my-12 lg:px-[100px]">
+        <div className="container mx-auto my-12 px-4 lg:px-[100px]">
             <div className="bg-indigo-900 py-4 px-6 rounded-t-xl">
                 <h1 className="text-2xl md:text-3xl font-bold text-white text-center">
                     User Feedbacks

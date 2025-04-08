@@ -38,7 +38,7 @@ const Contact = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <FaEnvelope className="text-cyan-400 text-xl bg-cyan-800 btn rounded-full w-14 h-14" />
+              <FaEnvelope className="text-cyan-400 text-xl bg-cyan-800 btn btn-sm rounded-full w-12 h-12 md:w-14 md:h-14" />
               <span className="text-xl text-gray-800">
                 ferot@gmail.com
               </span>
@@ -50,8 +50,8 @@ const Contact = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <FaWhatsapp className="text-green-400 text-xl bg-green-800 btn rounded-full w-14 h-14" />
-              <span className="text-xl text-gray-800">+880 160 953 1117</span>
+              <FaWhatsapp className="text-green-400 text-xl bg-green-800 btn btn-sm rounded-full w-12 h-12 md:w-14 md:h-14" />
+              <span className="text-lg md:text-xl text-gray-800">+880 160 953 1117</span>
             </motion.div>
 
             <motion.div
@@ -60,8 +60,8 @@ const Contact = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <FaMapMarkerAlt className="text-red-400 text-xl bg-red-800 btn rounded-full w-14 h-14" />
-              <span className="text-xl text-gray-800">
+              <FaMapMarkerAlt className="text-red-400 text-xl bg-red-800 btn btn-sm rounded-full w-12 h-12 md:w-14 md:h-14" />
+              <span className="text-lg md:text-xl text-gray-800">
                 Mirpur, Dhaka, Bangladesh
               </span>
             </motion.div>

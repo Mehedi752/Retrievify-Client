@@ -34,7 +34,7 @@ const FAQSection = () => {
 
   return (
     <div className="bg-gradient-to-r from-blue-50 via-white to-blue-50 my-12 py-8">
-       <div className="max-w-3xl mx-auto my-12 p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
+       <div className="w-11/12 lg:w-6/12 mx-auto my-12 p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
       <h2 className="text-4xl font-bold text-center mb-5 text-gray-900">
         Frequently Asked Questions
       </h2>
@@ -50,7 +50,7 @@ const FAQSection = () => {
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full text-left p-5 font-medium text-lg flex justify-between items-center focus:outline-none hover:bg-gray-100 rounded-xl"
+              className="w-full text-left p-4 font-medium text-lg flex justify-between items-center focus:outline-none hover:bg-gray-100 rounded-xl"
               aria-expanded={openIndex === index}
             >
               <span className="text-gray-900">{faq.question}</span>
