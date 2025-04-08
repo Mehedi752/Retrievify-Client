@@ -46,7 +46,7 @@ const Reviews = () => {
         }}
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination]}
-        className="w-full"
+        className="w-11/12 mx-auto lg:w-full"
       >
         {featuredFeedbacks.map((feedback) => (
           <SwiperSlide

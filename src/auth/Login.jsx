@@ -66,9 +66,9 @@ const Login = () => {
     };
 
     return (
-        <div className="pt-12">
-            <div className="flex items-center justify-between container mx-auto py-[72px] px-6 ">
-                <img src={authImg} alt="" className="w-[500px] h-[500px]" />
+        <div>
+            <div className="flex flex-col-reverse lg:flex-row items-center justify-between space-y-6 container mx-auto py-[50px] px-6 ">
+                <img src={authImg} alt="" className="lg:w-[500px] lg:h-[500px]" />
                 <div className="w-full p-12 space-y-4 bg-white rounded shadow-xl border border-gray-200 lg:mx-[150px]">
                     <h1 className="text-2xl font-bold text-center">Login</h1>
 

@@ -13,7 +13,7 @@ const ChooseUs = () => {
         with a trusted community and secure platform.
       </p>
 
-      <div className="mt-12 py-5 grid gap-8 md:grid-cols-3">
+      <div className="mt-12 py-5 grid gap-8 md:grid-cols-3 mx-4 lg:mx-0">
         {[
           {
             icon: (
