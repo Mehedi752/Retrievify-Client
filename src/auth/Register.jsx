@@ -57,9 +57,9 @@ const Register = () => {
     };
 
     return (
-        <div className="bg-base-200 pt-12">
-            <div className="container mx-auto py-[72px] px-6 flex items-center justify-between">
-                <img src={authImg} alt="" className="w-[500px] h-[500px]" />
+        <div className="bg-base-200">
+            <div className="container mx-auto py-[50px] px-6 flex flex-col-reverse lg:flex-row items-center justify-between">
+                <img src={authImg} alt="" className="lg:w-[500px] lg:h-[500px]" />
                 <div className="w-full p-12 space-y-4 bg-white rounded shadow-xl border border-gray-200 lg:mx-[150px]">
                     <h1 className="text-2xl font-bold text-center">Register</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
