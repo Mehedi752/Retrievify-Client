@@ -99,7 +99,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="">
       <div className="relative bg-cyan-100 overflow-hidden perspective w-full">
         {/* Removed max-w-7xl to allow full width */}
         <div className="relative h-[calc(100vh-64px)]"> {/* Adjusted height to full viewport minus navbar */}

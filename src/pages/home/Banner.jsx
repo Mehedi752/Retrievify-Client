@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Banner = () => {
     return (
         <div className="bg-gray-100 py-16">
-            <div className="container mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-between">
+            <div className="px-6  flex flex-col md:flex-row items-center justify-between">
 
                 {/* Left Content */}
                 <motion.div 

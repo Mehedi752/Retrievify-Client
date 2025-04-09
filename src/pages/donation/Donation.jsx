@@ -61,7 +61,7 @@ const Donate = () => {
             status: "pending",
         }
 
-        const response = await axios.post("http://localhost:5000/create-payment-method", payment)
+        const response = await axios.post("https://retrievify-server.onrender.com/create-payment-method", payment)
         console.log(response);
 
         if (response.data?.gatewayURL) {

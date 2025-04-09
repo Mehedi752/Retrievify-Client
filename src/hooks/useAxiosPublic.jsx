@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://retrievify-server.onrender.com',
 });
 const useAxiosPublic = () => {
     return axiosPublic;

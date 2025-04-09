@@ -22,6 +22,7 @@ import ChatApp from "../pages/ChatApp/ChatApp";
 import ChatLayout from "../layout/ChatLayout";
 import PrivateAdmin from "../provider/PrivateAdmin";
 import MyProfile from "../pages/my-profile/MyProfile";
+import PrivateRoute from "../provider/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/posts/:id",
-        element: <PostDetails></PostDetails>,
+        element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
       },
       {
         path: '/myAddedPosts',

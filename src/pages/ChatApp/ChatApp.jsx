@@ -40,7 +40,7 @@ const ChatApp = () => {
   console.log('Sender : ', sender);
   console.log('Receiver : ', receiver);
   
-  const socket = io("http://localhost:5000");
+  const socket = io("https://retrievify-server.onrender.com");
   return (
     <div className="flex h-[calc(100vh-110px)] bg-gray-100">
       <ChatSidebar users={users} count={count} />
