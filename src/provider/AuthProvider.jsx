@@ -9,8 +9,6 @@ import {
 } from 'firebase/auth'
 import { GoogleAuthProvider } from 'firebase/auth'
 import auth from '../../public/firebase.config'
-import useAxiosPublic from '../hooks/useAxiosPublic'
-import { toast } from 'react-toastify'
 
 // Create a context
 export const AuthContext = createContext()
@@ -18,7 +16,7 @@ export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const axiosPublic = useAxiosPublic();
+    const [trustScore, setTrustScore] = useState(0);
 
     // Create new user
     const createNewUser = (email, password) => {
@@ -83,7 +81,9 @@ const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         updateProfileUser,
-        signInWithGoogle
+        signInWithGoogle,
+        trustScore,
+        setTrustScore
     }
 
     return (
