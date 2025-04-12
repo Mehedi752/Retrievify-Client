@@ -30,7 +30,7 @@ const ChatSidebar = ({ users, count }) => {
     const { receieverEmail } = useParams()
 
     return (
-        <div className="w-1/3 bg-white shadow-lg p-4 flex flex-col border-r border-r-gray-200">
+        <div className="lg:w-1/3 bg-white shadow-lg p-4 flex flex-col border-r border-r-gray-200">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-md lg:text-xl font-bold">Chats({count ? count : "No New Messages"})</h2>
                 <button

@@ -42,7 +42,7 @@ const ChatApp = () => {
   
   const socket = io("https://retrievify-server.onrender.com");
   return (
-    <div className="flex h-[calc(100vh-110px)] bg-gray-100">
+    <div className="flex flex-col lg:flex-row h-[calc(100vh-110px)] bg-gray-100">
       <ChatSidebar users={users} count={count} />
       <ChatContainer refetchChats={refetch} sender={sender} receiver={receiver} socket={socket} />
     </div>

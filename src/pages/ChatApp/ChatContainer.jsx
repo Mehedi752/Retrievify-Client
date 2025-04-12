@@ -121,7 +121,7 @@ const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
         };
     }, [isOpen]);
     return (
-        <div className="flex flex-col w-full bg-white border border-gray-300  overflow-hidden">
+        <div className="flex flex-col w-full bg-white lg:border lg:border-gray-300 p-4 md:p-0  overflow-hidden">
             <div className="bg-green-700 text-white p-4 font-semibold text-lg border-b border-b-gray-200 flex justify-between">
                 <div className="flex items-center gap-2">
                     <img src={receiver.photoURL} alt="" className="w-12 h-12 rounded-full" />
@@ -138,7 +138,7 @@ const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
                             onClick={() => setIsOpen(!isOpen)}
                             className="focus:outline-none"
                         >
-                            <BsThreeDotsVertical className="cursor-pointer w-7 h-7" />
+                            <BsThreeDotsVertical className="cursor-pointer w-7 h-7 mt-2" />
                         </button>
                         {isOpen && (
                             <div className="absolute right-3 mt-2 w-40 bg-white border rounded-lg shadow-lg z-10">
@@ -172,7 +172,7 @@ const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
                         >
                             <div className={`flex min-w-20 max-w-[14rem] md:max-w-[25rem] lg:max-w-[32rem] ${msg.sender === sender?._id ? "justify-end" : "justify-start"}`}>
                                 <div className={`relative pl-3  pt-1 pb-4 pr-4 w-full rounded-lg flex flex-col shadow-md
-        ${msg.sender === sender?._id ? "bg-green-500 text-white rounded-br-none" : "bg-gray-100 text-black rounded-bl-none"}
+        ${msg.sender === sender?._id ? "bg-green-900 text-white rounded-br-none" : "bg-gray-100 text-black rounded-bl-none"}
     `}>
                                     <BsThreeDotsVertical
                                         className={`w-4 h-4 text-black cursor-pointer absolute top-1/2 -left-7 opacity-0 transition-opacity duration-300 -translate-y-1/2 group-hover:opacity-100 ${(msg.sender === sender?._id) ? "" : "hidden"}`}
@@ -210,9 +210,9 @@ const ChatContainer = ({ socket, sender, receiver, refetchChats }) => {
                         onChange={(e) => setNewMessage(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                     />
-                    <MdOutlineEmojiEmotions className="w-7 h-7 absolute right-37" />
-                    <MdOutlineAttachFile className="w-6 h-6 absolute right-29" />
-                    <CiCamera className="w-7 h-7 absolute right-20" />
+                    <MdOutlineEmojiEmotions className="w-7 h-7 absolute right-42 md:right-37" />
+                    <MdOutlineAttachFile className="w-6 h-6 absolute right-34 md:right-29" />
+                    <CiCamera className="w-7 h-7 absolute right-25 md:right-20" />
                     <button
                         onClick={sendMessage}
                         className="bg-blue-500 text-white p-3 rounded-full shadow-md hover:bg-blue-600 transition disabled:opacity-50"
